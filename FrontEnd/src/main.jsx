@@ -7,6 +7,8 @@ import Videolist from './Components/Videolist.jsx';
 
 
 const VideoPlayer = lazy(() => import("./Components/Videoplayer.jsx"));
+const Signup= lazy(()=> import("./Components/Signup.jsx"));
+const Login= lazy(()=> import("./Components/Login.jsx"));
 
 const appRouter= createBrowserRouter([
 
@@ -33,6 +35,35 @@ const appRouter= createBrowserRouter([
             }
           >
             <VideoPlayer />
+          </Suspense>
+        )
+      },
+
+      {
+        path:"/register",
+        element:(
+          <Suspense
+            fallback={
+              <div>
+                <h1>Please wait while we are Lazy Loading this...</h1>
+              </div>
+            }
+          >
+            <Signup />
+          </Suspense>
+        )
+      },
+      {
+        path:"/login",
+        element:(
+          <Suspense
+            fallback={
+              <div>
+                <h1>Please wait while we are Lazy Loading this...</h1>
+              </div>
+            }
+          >
+            <Login />
           </Suspense>
         )
       }

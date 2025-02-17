@@ -72,26 +72,26 @@ export const videoData= [
         },
         {
           "videoId": "Lr31ykfAY30",
-          "title": "Ed Sheeran - Shape of You [Official Video]",
-          "thumbnailUrl": "https://i.ytimg.com/vi/JGwWNGJdvx8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDlT6L0sEzlJ81zLRYRh9Ja0fXW3g",
-          "description": "The official video for Ed Sheeran’s song “Shape of You”.",
+          "title": "Lady Gaga, Bruno Mars Die with a Smile",
+          "thumbnailUrl": "https://i.ytimg.com/vi/kPa7bsKwL-c/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLDxsGblO6cBfBbn7bEer-N6CwrpSg",
+          "description": "The official video for Lady Gaga and Bruno Mars “Die with a Smile”.",
           "subscriber": "55.8M",
           "channelId": "UCq1X43nJbyubWGAqHvxwGHg",
-          "uploader": "Ed Sheeran",
-          "views": 5500000000,
+          "uploader": "Lady Gaga",
+          "views": 701000000,
           "likes": 30000000,
           "dislikes": 800000,
-          "uploadDate": "2017-01-30",
+          "uploadDate": "2024-08-30",
           "category": "Music",
           "comments": [
             {
               "commentId": "comment4",
               "userId": "user4",
-              "text": "This song never gets old.",
+              "text": "Omg I love Lady Gaga and Bruno Mars.",
               "timestamp": "2025-02-13T11:30:00Z"
             }
           ],
-          "videoLink": "https://www.youtube.com/watch?v=JGwWNGJdvx8"
+          "videoLink": "https://www.youtube.com/watch?v=kPa7bsKwL-c"
         },
         {
           "videoId": "kJQP7kiw5Fk",
@@ -142,7 +142,7 @@ export const videoData= [
         {
           "videoId": "5qap5aO4i9A",
           "title": "Lofi Hip Hop Radio - Beats to Relax/Study to",
-          "thumbnailUrl": "https://i.ytimg.com/an_webp/lTRiuFIWV54/mqdefault_6s.webp?du=3000&sqp=CMrGwr0G&rs=AOn4CLAyhWQuYnAUyIBODv1gQPs1vk062A",
+          "thumbnailUrl": "https://i.ytimg.com/vi/xsDnEj2Hx4Q/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLCCtWU9EuFw3roEgEm3A1Y861npGA",
           "description": "Lofi hip-hop radio for relaxing or studying.",
           "subscriber": "14.8M",
           "channelId": "UC5CwaMl1eIgY4TkW1pHd2dA",
@@ -449,16 +449,16 @@ export const videoData= [
                         },
                         {
                           "videoId": "YTstZ0Q6Ftk",
-                          "title": "Ed Sheeran - Shape Of You (Official Music Video)",
-                          "thumbnailUrl": "https://i.ytimg.com/vi/JGwWNGJdvx8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDlT6L0sEzlJ81zLRYRh9Ja0fXW3g",
-                          "description": "Ed Sheeran’s official music video for 'Shape Of You'.",
+                          "title": "Rose & Bruno Mars - APT (official Video)",
+                          "thumbnailUrl": "https://i.ytimg.com/vi/ekr2nIex040/hqdefault.jpg?sqp=-oaymwEnCNACELwBSFryq4qpAxkIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB&rs=AOn4CLBRSqFFz5z7JDdmHE_tOSScjzIDXQ",
+                          "description": "Rose & Bruno Mars official music video for 'APT'.",
                           "subscriber": "55.8M",
-                          "channelId": "Ed Sheeran",
-                          "uploader": "Ed Sheeran",
-                          "views": 5000000000,
+                          "channelId": "Rose",
+                          "uploader": "Rose",
+                          "views": 1100000000,
                           "likes": 40000000,
                           "dislikes": 1000000,
-                          "uploadDate": "2017-01-30",
+                          "uploadDate": "2024-11-20",
                           "category": "Music",
                           "comments": [
                             {
@@ -468,7 +468,7 @@ export const videoData= [
                               "timestamp": "2025-02-14T00:30:00Z"
                             }
                           ],
-                          "videoLink": "https://www.youtube.com/watch?v=JGwWNGJdvx8"
+                          "videoLink": "https://www.youtube.com/watch?v=ekr2nIex040"
                         },
                         {
                           "videoId": "7PCkvCPvDXk",

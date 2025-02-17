@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import '../styles.css'
 import {Link, useNavigate} from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import { setMenuOpen } from "../Utils/menuSlice";
+import { checkTokenExpiry } from "../Utils/authSlice";
+
+
 
 
 function Header(){
@@ -36,6 +39,16 @@ function Header(){
     setIsMenuOpen(!isMenuOpen);
     dispatch(setMenuOpen(!isMenuOpen));
   };
+
+  
+  useEffect(() => {
+    dispatch(checkTokenExpiry());
+    const interval = setInterval(() => {
+        dispatch(checkTokenExpiry());
+    }, 60000); // Check every minute
+
+    return () => clearInterval(interval);
+}, [dispatch]);
 
 
     return(

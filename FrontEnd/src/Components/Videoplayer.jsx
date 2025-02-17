@@ -20,7 +20,7 @@ function VideoPlayer(){
         return (
           <div className="error">
             {" "}
-            <h2>Error Occured.Can't fetch videos !</h2>{" "}
+            <h2>Error Occured.Can't fetch the video !</h2>{" "}
           </div>
         );
       }
@@ -28,9 +28,33 @@ function VideoPlayer(){
       if (loading) {
         return (
           <div className="loading">
-            <h1> Please Wait while we are loading all products...</h1>
+            <h1> Please Wait while we are loading the video...</h1>
           </div>
         );
+      }
+
+      function timeAgo(uploadDate) {
+        const uploadTime = new Date(uploadDate);
+        const now = new Date();
+        const seconds = Math.floor((now - uploadTime) / 1000);
+    
+        const intervals = {
+          year: 31536000,
+          month: 2592000,
+          week: 604800,
+          day: 86400,
+          hour: 3600,
+          minute: 60,
+          second: 1
+        };
+    
+        for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+          const count = Math.floor(seconds / secondsInUnit);
+          if (count >= 1) {
+            return `${count} ${unit}${count > 1 ? "s" : ""} ago`;
+          }
+        }
+        return "Just now";
       }
 
       function formatViews(views) {
@@ -82,8 +106,15 @@ function VideoPlayer(){
         <div >
             <button className="likebutton"><i className="fa-solid fa-thumbs-up fa-xl"></i> &nbsp;{formatViews(data.likes)}</button>
             <button className="dislikebutton"><i className="fa-solid fa-thumbs-down fa-flip-horizontal fa-xl"></i> </button>
-            <button className="sharebutton"><i className="fa-solid fa-share fa-xl"></i> Share</button>
+            <button className="sharebutton"><i className="fa-solid fa-share fa-xl mlr-10"></i> Share</button>
+            <button className="sharebutton"><i className="fa-solid fa-download fa-xl mlr-10"></i> Download</button>
         </div> 
+
+    </div>
+
+    <div className="description">
+<h4>{formatViews(data.views)} views &nbsp; {timeAgo(data.uploadDate)}</h4>
+<p>{data.description}</p>
 
     </div>
     </div>

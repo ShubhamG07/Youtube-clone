@@ -51,7 +51,7 @@ function Videolist(){
       if (loading) {
         return (
           <div className="loading">
-            <h1> Please Wait while we are loading all products...</h1>
+            <h1> Please Wait while we are loading all Videos...</h1>
           </div>
         );
       }
