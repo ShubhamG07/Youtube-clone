@@ -5,10 +5,13 @@ import User from "../Model/User.js"; // Assuming you have a User model
 const jwtKey = "securityKey"; // Use  for security
 
 
+
+
+
 // **User Signup**
 export const signupUser= async (req, res) => {
     try {
-        let { username, email, password } = req.body;
+        let {fullname, username, email, password } = req.body;
         email = email.toLowerCase();
 
         // Check if user already exists
@@ -19,7 +22,7 @@ export const signupUser= async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create new user
-        const newUser = new User({ username, email, password: hashedPassword });
+        const newUser = new User({ fullname, username, email, password: hashedPassword });
         await newUser.save();
 
         // Generate JWT token
@@ -65,3 +68,41 @@ export const logoutUser =  (req, res) => {
     res.clearCookie("token"); // Remove JWT cookie
     res.json({ message: "Logged out successfully" });
 };
+
+// get logged in user details 
+
+export const userProfile =  (req, res) => {
+    const token = req.cookies.token;
+    if (!token) return res.status(401).json({ error: "Unauthorized" });
+
+    try {
+        const verified = jwt.verify(token,  jwtKey);
+        User.findById(verified.id, "-password").then((user) => {
+            if (!user) return res.status(404).json({ error: "User not found" });
+            res.json(user);
+        });
+    } catch (error) {
+        res.status(403).json({ error: "Invalid token" });
+    }
+}
+
+// Update Profile
+export const updateProfile = async (req, res) => {
+    try {
+        const token = req.cookies.token;
+        if (!token) return res.status(401).json({ error: "Unauthorized" });
+
+        const verified = jwt.verify(token, jwtKey);
+        const { fullname ,username } = req.body;
+
+        const updatedUser = await User.findByIdAndUpdate(
+            verified.id,
+            { fullname ,username},
+            { new: true, select: "-password" }
+        );
+
+        res.json({ message: "Profile updated successfully", updatedUser });
+    } catch (error) {
+        res.status(500).json({ error: "Error updating profile" });
+    }
+}

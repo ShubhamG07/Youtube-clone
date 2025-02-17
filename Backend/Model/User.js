@@ -2,6 +2,10 @@ import mongoose from "mongoose"
 
 //register user schema
 const userSignupSchema = mongoose.Schema({ 
+    fullname: {
+        type: String,
+        required: true,
+    },
     username: {
         type: String,
         required: true,

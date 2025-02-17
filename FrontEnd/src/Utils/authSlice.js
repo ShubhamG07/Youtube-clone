@@ -1,43 +1,68 @@
 import { createSlice } from "@reduxjs/toolkit";
-import jwtDecode from "jwt-decode";
 import axios from "axios";
 
 
-const token = localStorage.getItem("token");
+
 const initialState = {
-    user: token ? jwtDecode(token) : null,
-    token: token || null
+    user: null,
+    isAuthenticated: false,
+    loading: false,
+    error: null,
 };
 
 const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
+        loginStart: (state) => {
+            state.loading = true;
+            state.error = null;
+        },
         loginSuccess: (state, action) => {
             state.user = action.payload.user;
-            state.token = action.payload.token;
-            localStorage.setItem("token", action.payload.token);
+            state.isAuthenticated= true;
+            state.loading = false;
+            state.error = null;
+        },
+        loginFailure: (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
         },
         logout: (state) => {
             state.user = null;
-            state.token = null;
-            localStorage.removeItem("token");
-        }
-    }
+            state.isAuthenticated= false;
+            state.loading = false;
+            state.error = null;
+        },
+        updateProfile: (state, action) => {
+            state.user = action.payload;
+        },
+    },
 });
 
-export const { loginSuccess, logout } = authSlice.actions;
+export const { loginStart, loginSuccess, loginFailure, logout, updateProfile } = authSlice.actions;
+
+// **checkAuthStatus** - Check user authentication
+export const checkAuthStatus = () => async (dispatch) => {
+    try {
+        console.log("Checking authentication status..."); // Debug log
+        // Send request to protected route to check if user is still authenticated
+        const res = await axios.get("http://localhost:3000/users/profile", { withCredentials: true });
+        console.log("User authenticated:", res.data); // Debug log
+
+        // If the response is successful, mark the user as authenticated
+        dispatch(loginSuccess({user:res.data}));
+     
+    } catch (error) {
+        // If there's an error (invalid or expired token), log out the user
+        dispatch(logout());
+    }
+};
+
+export const updateUser = (updatedUser) => (dispatch) => {
+    dispatch(loginSuccess({user:payload}));
+};
+
 export default authSlice.reducer;
 
 
-// **Logout user if token is expired**
-export const checkTokenExpiry = () => (dispatch) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-      const decoded = jwtDecode(token);
-      if (decoded.exp * 1000 < Date.now()) {
-          dispatch(logout());
-          axios.post("http://localhost:3000/users/logout", {}, { withCredentials: true });
-      }
-  }
-};

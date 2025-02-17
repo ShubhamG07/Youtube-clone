@@ -1,9 +1,14 @@
 import "../styles.css"
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginSuccess } from "../Utils/authSlice";
 
 function Login(){
 
+    const navigate=useNavigate();
+    const dispatch=useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -17,12 +22,22 @@ function Login(){
             }, { withCredentials: true });
 
             setMessage(res.data.message);
-            localStorage.setItem("token", res.data.token); 
+            dispatch(loginSuccess(res.data));
+            setTimeout(() => {
+                setMessage('');
+                navigate('/');
+              },1000);
         } catch (error) {
+            if(error.response.status==403){
+                navigate("/profile");
+            }
+            else{
             setMessage(error.response?.data?.error || "Login failed");
+            }
         }
     };
 
+  
     return (
         <div className="signup">
             <div className="formcontainer">

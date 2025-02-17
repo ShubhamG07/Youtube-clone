@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function Signup(){
     
     const navigate =useNavigate();
+    const[fullname,setFullname]=useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,6 +16,7 @@ function Signup(){
         e.preventDefault();
         try {
             const res = await axios.post("http://localhost:3000/users/signup", {
+                fullname,
                 username,
                 email,
                 password
@@ -26,6 +28,9 @@ function Signup(){
                 navigate('/login');
               },2000);
         } catch (error) {
+            if(error.response.status==403){
+                navigate("/profile");
+            }
             setMessage(error.response?.data?.error || "Signup failed");
         }
     };
@@ -35,6 +40,7 @@ function Signup(){
             <div className="formcontainer">
             <h2>Sign Up</h2>
             <form onSubmit={handleSubmit}>
+               <input type="text" placeholder="Full Name" value={fullname} onChange={(e) => setFullname(e.target.value)} required />
                 <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
                 <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />

@@ -1,9 +1,10 @@
 import { useState,useEffect } from "react";
 import '../styles.css'
 import {Link, useNavigate} from 'react-router-dom'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setMenuOpen } from "../Utils/menuSlice";
-import { checkTokenExpiry } from "../Utils/authSlice";
+import axios from "axios";
+import { logout,loginSuccess,checkAuthStatus } from "../Utils/authSlice";
 
 
 
@@ -13,8 +14,12 @@ function Header(){
   const navigate=useNavigate();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
     const[searchedText,seSearchedText]=useState("");
     const dispatch =useDispatch();
+    const { isAuthenticated,user } = useSelector((state) => state.auth);
+
+    console.log("isauth",isAuthenticated,user);
 
     // function for handling search query 
 
@@ -32,6 +37,16 @@ function Header(){
     }
   };
 
+  // logout function 
+  const handleLogout = async () => {
+    try {
+        await axios.post("http://localhost:3000/users/logout", {}, { withCredentials: true });
+        dispatch(logout()); // Update Redux state
+    } catch (error) {
+        console.error("Logout failed", error);
+    }
+};
+
 
 // function for showing hamburger menu modal 
 
@@ -41,14 +56,23 @@ function Header(){
   };
 
   
+// function for showing hamburger menu modal 
+
+const toggleUserMenu = () => {
+  setIsUserMenuOpen(!isUserMenuOpen);
+ 
+};
+
+
+  
   useEffect(() => {
-    dispatch(checkTokenExpiry());
+dispatch(checkAuthStatus());
     const interval = setInterval(() => {
-        dispatch(checkTokenExpiry());
-    }, 60000); // Check every minute
+        dispatch(checkAuthStatus());
+    }, 60000); // Check every  minute
 
     return () => clearInterval(interval);
-}, [dispatch]);
+}, [dispatch ]);
 
 
     return(
@@ -81,15 +105,36 @@ function Header(){
                 </section>
 
                 <section className="bb-2">
+                  {isAuthenticated?<div>
+                    <h3>You &gt;</h3>
+                    <p><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" className="mlr-10 svg-2"><path clipRule="evenodd" d="M14.203 4.83c-1.74-.534-3.614-.418-5.274.327-1.354.608-2.49 1.6-3.273 2.843H8.25c.414 0 .75.336.75.75s-.336.75-.75.75H3V4.25c0-.414.336-.75.75-.75s.75.336.75.75v2.775c.935-1.41 2.254-2.536 3.815-3.236 1.992-.894 4.241-1.033 6.328-.392 2.088.641 3.87 2.02 5.017 3.878 1.146 1.858 1.578 4.07 1.215 6.223-.364 2.153-1.498 4.1-3.19 5.48-1.693 1.379-3.83 2.095-6.012 2.016-2.182-.08-4.26-.949-5.849-2.447-1.588-1.499-2.578-3.523-2.784-5.697-.039-.412.264-.778.676-.817.412-.04.778.263.818.675.171 1.812.996 3.499 2.32 4.748 1.323 1.248 3.055 1.973 4.874 2.04 1.818.065 3.598-.532 5.01-1.681 1.41-1.15 2.355-2.773 2.657-4.567.303-1.794-.056-3.637-1.012-5.186-.955-1.548-2.44-2.697-4.18-3.231ZM12.75 7.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75v4.886l.314.224 3.5 2.5c.337.241.806.163 1.046-.174.241-.337.163-.806-.174-1.046l-3.186-2.276V7.5Z" fillRule="evenodd"></path></svg> History</p>
+                    <p><i className="fa-solid fa-photo-film fa-lg mlr-10"></i>Playlist</p>
+                    <p><i className="fa-solid fa-video fa-lg mlr-10"></i>Your Videos</p>
+                    <p> <i className="fa-solid fa-graduation-cap fa-lg mlr-10 "></i>Your Courses</p>
+                    <p> <i className="fa-solid fa-clock fa-lg mlr-10 "></i>Watch later</p>
+                    <p> <i className="fa-solid fa-thumbs-up fa-lg mlr-10 "></i>Liked Videos</p>
+                  </div>
+                    :<div>
                 <p > <i className="fa-solid fa-user fa-lg mlr-10"></i> You</p>
-                <p><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" className="mlr-10 svg-2"><path clipRule="evenodd" d="M14.203 4.83c-1.74-.534-3.614-.418-5.274.327-1.354.608-2.49 1.6-3.273 2.843H8.25c.414 0 .75.336.75.75s-.336.75-.75.75H3V4.25c0-.414.336-.75.75-.75s.75.336.75.75v2.775c.935-1.41 2.254-2.536 3.815-3.236 1.992-.894 4.241-1.033 6.328-.392 2.088.641 3.87 2.02 5.017 3.878 1.146 1.858 1.578 4.07 1.215 6.223-.364 2.153-1.498 4.1-3.19 5.48-1.693 1.379-3.83 2.095-6.012 2.016-2.182-.08-4.26-.949-5.849-2.447-1.588-1.499-2.578-3.523-2.784-5.697-.039-.412.264-.778.676-.817.412-.04.778.263.818.675.171 1.812.996 3.499 2.32 4.748 1.323 1.248 3.055 1.973 4.874 2.04 1.818.065 3.598-.532 5.01-1.681 1.41-1.15 2.355-2.773 2.657-4.567.303-1.794-.056-3.637-1.012-5.186-.955-1.548-2.44-2.697-4.18-3.231ZM12.75 7.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75v4.886l.314.224 3.5 2.5c.337.241.806.163 1.046-.174.241-.337.163-.806-.174-1.046l-3.186-2.276V7.5Z" fillRule="evenodd"></path></svg> History</p>
+                <p><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="24" viewBox="0 0 24 24" width="24" focusable="false" aria-hidden="true" className="mlr-10 svg-2"><path clipRule="evenodd" d="M14.203 4.83c-1.74-.534-3.614-.418-5.274.327-1.354.608-2.49 1.6-3.273 2.843H8.25c.414 0 .75.336.75.75s-.336.75-.75.75H3V4.25c0-.414.336-.75.75-.75s.75.336.75.75v2.775c.935-1.41 2.254-2.536 3.815-3.236 1.992-.894 4.241-1.033 6.328-.392 2.088.641 3.87 2.02 5.017 3.878 1.146 1.858 1.578 4.07 1.215 6.223-.364 2.153-1.498 4.1-3.19 5.48-1.693 1.379-3.83 2.095-6.012 2.016-2.182-.08-4.26-.949-5.849-2.447-1.588-1.499-2.578-3.523-2.784-5.697-.039-.412.264-.778.676-.817.412-.04.778.263.818.675.171 1.812.996 3.499 2.32 4.748 1.323 1.248 3.055 1.973 4.874 2.04 1.818.065 3.598-.532 5.01-1.681 1.41-1.15 2.355-2.773 2.657-4.567.303-1.794-.056-3.637-1.012-5.186-.955-1.548-2.44-2.697-4.18-3.231ZM12.75 7.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75v4.886l.314.224 3.5 2.5c.337.241.806.163 1.046-.174.241-.337.163-.806-.174-1.046l-3.186-2.276V7.5Z" fillRule="evenodd"></path></svg> History</p></div>}
                 </section>
 
                 {/* signin section  */}
 
                 <section className="bb-2">
+                  {   isAuthenticated ?
+                  <div>
+                    <h3>Subscriptions</h3>
+                    <p><img src="https://yt3.ggpht.com/DFAj5Pcujo1P0iXe8x4XoZwwItN9cbHnDxbdamvhqSTzXTmyNlqsE1HN2bEQN5vpXE6SB1IAoCM=s176-c-k-c0x00ffffff-no-rj" alt="" height="25px" width="25px" className="mlr-10 br50"/>Bruno Mars</p>
+                    <p><img src="https://yt3.googleusercontent.com/qjsflFmyakGs5ekX8fPsDNfuKABx-yxIDrv-4ooPAFcZ6JUUpUPlue7g_d-VAk2YAiYR-0yr=s160-c-k-c0x00ffffff-no-rj" alt="" height="25px" width="25px" className="mlr-10 br50"/>Rose</p>
+                    <p><img src="https://yt3.ggpht.com/PhFThrqp58joMS9FOd7I2jPZ1TepvCKDsdnuwmFXPl-Tq0kZjw3GNtCNtsxt3dgH8bqW7RdK=s176-c-k-c0x00ffffff-no-rj" alt="" height="25px" width="25px" className="mlr-10 br50"/>Lady Gaga</p>
+                    <p><img src="https://yt3.ggpht.com/Se8rnTzGI-Y8RmcltkCY9g8Evf0wVEIqGboR0G2EZWsrL6W61c0v9m6ijeDCAgNIF0U9tPIHbQ=s176-c-k-c0x00ffffff-no-rj" alt="" height="25px" width="25px" className="mlr-10 br50"/>Ed Sheeran</p>
+                  </div>
+                       :
+                  <div>
                     <h4 className="signinheading">Sign in to like videos, comment, and subscribe.</h4>
-                    <div className="signin"><i className="fa-regular fa-user fa-lg mlr-10"></i>Sign in </div>
+                    <Link to='/login'><div className="signin"><i className="fa-regular fa-user fa-lg mlr-10"></i>Sign in </div></Link></div>
+                  }
                 </section>
 
                 {/* explore section  */}
@@ -164,7 +209,36 @@ function Header(){
     <input className="searchinput" onChange={(e)=>seSearchedText(e.target.value)}  onKeyDown={handleKeyDown}  type="text" placeholder="Search" />
     <button onClick={handleSearch} className="searchbutton"><i className="fa-solid fa-magnifying-glass fa-2xl"></i></button>
 </div>
-<div className="signin"><i className="fa-regular fa-user  mlr-10"></i>Sign in </div>
+
+{/* usermenu and create channel  */}
+
+{isAuthenticated?<div className="create-channel"><i className="fa-solid fa-plus fa-lg"></i> Create Channel</div>:""}
+{isAuthenticated?<div><div className="namelogo" onClick={toggleUserMenu}>{user.fullname.charAt(0).toUpperCase()}</div>{isUserMenuOpen? <div className="usermodal">
+  
+  <div className="email-name">
+  <div><p className="namelogomodal" >{user.fullname.charAt(0).toUpperCase()}</p> </div>
+  <div><p>{user.fullname}</p>
+  <p>@{user.username}</p>
+  </div>
+  </div>
+  
+  <div className="usermodal-content">
+  <div className="user-menu-items">
+  <p onClick={handleLogout} className=" bbuser"><i className="fa-solid fa-arrow-right-from-bracket fa-xl mlr-15"></i>Sign Out</p>
+  <p><i className="fa-brands fa-youtube red fa-lg mlr-15"></i>Youtube Studio</p>
+  <p className="bbuser"><i className="fa-solid fa-dollar fa-lg mlr-15"></i>Purchases and memberships</p>
+  <p><i className="fa-solid fa-file-shield fa-lg  mlr-15"></i>Your Data in Youtube</p>
+  <p><i className="fa-solid fa-moon fa-lg  mlr-15"></i>Appearance : Light</p>
+  <p><i className="fa-solid fa-language fa-lg  mlr-15"></i>Language : English</p>
+  <p><i className="fa-solid fa-globe fa-lg  mlr-15"></i>Location : India</p>
+  <p className="bbuser"><i className="fa-solid fa-keyboard fa-lg mlr-15"></i>Keyboard Shortcuts</p>
+  <p className="bbuser"><i className="fa-solid fa-gear fa-lg mlr-15"></i> Settings</p>
+  <p><i className="fa-solid fa-question fa-lg mlr-15"></i>Help</p>
+  <p><i class="fa-regular fa-message fa-lg mlr-15"></i>Send Feedback</p>
+  </div>
+  </div>
+  </div>:""}</div>: <Link to='/login'><div className="signin"> <i className="fa-regular fa-user  mlr-10"></i>Sign in </div></Link>}
+
         </div>
     )
 }
