@@ -9,6 +9,7 @@ import Videolist from './Components/Videolist.jsx';
 const VideoPlayer = lazy(() => import("./Components/Videoplayer.jsx"));
 const Signup= lazy(()=> import("./Components/Signup.jsx"));
 const Login= lazy(()=> import("./Components/Login.jsx"));
+const Profile= lazy(()=> import("./Components/Profile.jsx"));
 
 const appRouter= createBrowserRouter([
 
@@ -66,7 +67,20 @@ const appRouter= createBrowserRouter([
             <Login />
           </Suspense>
         )
-      }
+      },
+      {path:"/profile",
+      element:(
+        <Suspense
+          fallback={
+            <div>
+              <h1>Please wait while we are Lazy Loading this...</h1>
+            </div>
+          }
+        >
+          <Profile />
+        </Suspense>
+      )
+    }
     ]
   }
 

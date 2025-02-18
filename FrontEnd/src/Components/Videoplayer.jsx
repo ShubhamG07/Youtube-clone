@@ -1,11 +1,20 @@
 import ReactPlayer from "react-player";
 import "../styles.css"
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import useFetch from "../Utils/fetchData";
+import Suggested from "./SuggestedList";
+import { useState,useEffect } from "react";
+import axios from "axios";
+import { useSelector} from "react-redux";
+import Comment from "./CommentItem";
 
 function VideoPlayer(){
 
     const {id}=useParams();
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState("");
+    const navigate=useNavigate();
+    const { isAuthenticated,user } = useSelector((state) => state.auth);
 
     // fetching video from backend api using id attribute from link 
 
@@ -13,6 +22,49 @@ function VideoPlayer(){
         `http://localhost:3000/videos/${id}`
       );
 
+       // fetching comments for a particular video 
+       useEffect(() => {
+        fetchComments();
+      }, [id]);
+    
+      // Fetch Comments
+      const fetchComments = async () => {
+        try {
+          const response = await axios.get(`http://localhost:3000/videos/${id}/comments`);
+          setComments(response.data);
+         
+        } catch (error) {
+          console.error("Error fetching comments:", error);
+        }
+      };
+
+      console.log("all comments",comments);
+    
+      // Add Comment
+      const handleAddComment = async () => {
+        if (!user) {
+          navigate("/login");
+          return;
+        }
+    
+        try {
+          const response = await axios.post(
+            `http://localhost:3000/videos/${id}/comment`,
+            { "text": newComment,
+              "user_id": user._id,
+              "user_name":user.username
+             }
+           
+          );
+    
+          setNewComment("");
+          setComments([ response.data, ...comments]); // Add new comment to state
+        } catch (error) {
+          console.error("Error adding comment:", error);
+        }
+      };
+    
+   
 
     //   if there is some error or data still loading 
 
@@ -33,6 +85,12 @@ function VideoPlayer(){
         );
       }
 
+     
+
+   
+
+
+      // timeago function to connvert time data in format s,h,d,m,y format
       function timeAgo(uploadDate) {
         const uploadTime = new Date(uploadDate);
         const now = new Date();
@@ -57,6 +115,8 @@ function VideoPlayer(){
         return "Just now";
       }
 
+      // format views function to format views in count format 
+
       function formatViews(views) {
         if (views < 1000) return views.toString();
         if (views < 1_000_000) return (views / 1_000).toFixed(0) + "K";
@@ -65,8 +125,12 @@ function VideoPlayer(){
         return (views / 1_000_000_000_000).toFixed(1) + "T";
       }
 
-   data ? console.log("videoplayer loaded",data):"";
+  //  data ? console.log("videoplayer loaded",data):"";
+
+  //  our component starts from here 
     return(
+      <div>
+      <Suggested vid={id} />
         <div className="videoplayer">
             <div className="reactplayer">
             {data? <ReactPlayer
@@ -117,6 +181,36 @@ function VideoPlayer(){
 <p>{data.description}</p>
 
     </div>
+
+    <div className="comment bt-2 mt-10">
+        <h2>{comments.length} comments </h2>
+        <div className="commentsection">
+        <div className="commentnamelogo"> {user && user.fullname?user.fullname.charAt(0).toUpperCase():<i className="fa-solid fa-user fa-lg"></i>}</div>
+        <div className="add-comment">
+          <input
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            placeholder="Add a comment..."
+          />
+          {user?  <button className="comment-button" onClick={handleAddComment}>Comment</button>:<div> Sign in to Comment <button  className="comment-button" onClick={() => navigate("/login")}>Sign in</button></div> }
+      
+        </div>
+
+
+       
+
+        </div>
+      
+
+        <div className="all-comments">
+        {comments
+            ? comments.map((c) => (
+                <Comment key={c._id} data={c} vid={id} cdata={{comments, setComments,newComment,setNewComment}} />
+              ))
+            : ""}
+             </div>
+    </div>
+
     </div>
     :""
 }
@@ -124,6 +218,7 @@ function VideoPlayer(){
 
             
           
+        </div>
         </div>
     )
 }

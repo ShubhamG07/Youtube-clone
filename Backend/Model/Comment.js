@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 
 export const commentSchema =mongoose.Schema({
-    commentId: {
+   
+    username:{
       type: String,
       required: true
     },

@@ -16,7 +16,7 @@ export const videoData= [
           "category": "Music",
           "comments": [
             {
-              "commentId": "comment1",
+              "username": "comment1",
               "userId": "user1",
               "text": "Classic hit!",
               "timestamp": "2025-02-13T10:00:00Z"
@@ -39,7 +39,7 @@ export const videoData= [
           "category": "Music",
           "comments": [
             {
-              "commentId": "comment2",
+              "username": "comment2",
               "userId": "user2",
               "text": "Such an energetic song!",
               "timestamp": "2025-02-13T10:30:00Z"
@@ -62,7 +62,7 @@ export const videoData= [
           "category": "Music",
           "comments": [
             {
-              "commentId": "comment3",
+              "username": "comment3",
               "userId": "user3",
               "text": "This song still slaps!",
               "timestamp": "2025-02-13T11:00:00Z"
@@ -85,7 +85,7 @@ export const videoData= [
           "category": "Music",
           "comments": [
             {
-              "commentId": "comment4",
+              "username": "comment4",
               "userId": "user4",
               "text": "Omg I love Lady Gaga and Bruno Mars.",
               "timestamp": "2025-02-13T11:30:00Z"
@@ -108,7 +108,7 @@ export const videoData= [
           "category": "Music",
           "comments": [
             {
-              "commentId": "comment5",
+              "username": "comment5",
               "userId": "user5",
               "text": "Still an anthem after all these years.",
               "timestamp": "2025-02-13T12:00:00Z"
@@ -131,7 +131,7 @@ export const videoData= [
           "category": "Music",
           "comments": [
             {
-              "commentId": "comment6",
+              "username": "comment6",
               "userId": "user6",
               "text": "Such a powerful song.",
               "timestamp": "2025-02-13T12:30:00Z"
@@ -154,7 +154,7 @@ export const videoData= [
           "category": "Music",
           "comments": [
             {
-              "commentId": "comment7",
+              "username": "comment7",
               "userId": "user7",
               "text": "Perfect for studying!",
               "timestamp": "2025-02-13T13:00:00Z"
@@ -177,7 +177,7 @@ export const videoData= [
           "category": "Music",
           "comments": [
             {
-              "commentId": "comment8",
+              "username": "comment8",
               "userId": "user8",
               "text": "Such an emotional song.",
               "timestamp": "2025-02-13T13:30:00Z"
@@ -200,7 +200,7 @@ export const videoData= [
               "category": "Music",
               "comments": [
                 {
-                  "commentId": "comment9",
+                  "username": "comment9",
                   "userId": "user9",
                   "text": "This song never gets old!",
                   "timestamp": "2025-02-13T14:00:00Z"
@@ -224,7 +224,7 @@ export const videoData= [
                   "category": "Music",
                   "comments": [
                     {
-                      "commentId": "comment10",
+                      "username": "comment10",
                       "userId": "user10",
                       "text": "The King of Pop! Still unmatched!",
                       "timestamp": "2025-02-13T14:30:00Z"
@@ -247,7 +247,7 @@ export const videoData= [
                   "category": "Music",
                   "comments": [
                     {
-                      "commentId": "comment11",
+                      "username": "comment11",
                       "userId": "user11",
                       "text": "A timeless masterpiece!",
                       "timestamp": "2025-02-13T15:00:00Z"
@@ -271,7 +271,7 @@ export const videoData= [
                   "category": "Music",
                   "comments": [
                     {
-                      "commentId": "comment13",
+                      "username": "comment13",
                       "userId": "user13",
                       "text": "Such a beautiful love song!",
                       "timestamp": "2025-02-13T16:00:00Z"
@@ -294,7 +294,7 @@ export const videoData= [
                   "category": "Music",
                   "comments": [
                     {
-                      "commentId": "comment14",
+                      "username": "comment14",
                       "userId": "user14",
                       "text": "This video is iconic!",
                       "timestamp": "2025-02-13T16:30:00Z"
@@ -317,7 +317,7 @@ export const videoData= [
                   "category": "Music",
                   "comments": [
                     {
-                      "commentId": "comment15",
+                      "username": "comment15",
                       "userId": "user15",
                       "text": "This song is amazing!",
                       "timestamp": "2025-02-13T17:00:00Z"
@@ -341,7 +341,7 @@ export const videoData= [
                   "category": "Music",
                   "comments": [
                     {
-                      "commentId": "comment18",
+                      "username": "comment18",
                       "userId": "user18",
                       "text": "This song is such a banger!",
                       "timestamp": "2025-02-13T18:30:00Z"
@@ -365,7 +365,7 @@ export const videoData= [
                       "category": "Music",
                       "comments": [
                         {
-                          "commentId": "comment19",
+                          "username": "comment19",
                           "userId": "user19",
                           "text": "The meme song of the century!",
                           "timestamp": "2025-02-13T19:00:00Z"
@@ -389,7 +389,7 @@ export const videoData= [
                       "category": "Music",
                       "comments": [
                         {
-                          "commentId": "comment22",
+                          "username": "comment22",
                           "userId": "user22",
                           "text": "This song makes me wanna dance!",
                           "timestamp": "2025-02-13T20:30:00Z"
@@ -414,7 +414,7 @@ export const videoData= [
                       "category": "Music",
                       "comments": [
                         {
-                          "commentId": "comment26",
+                          "username": "comment26",
                           "userId": "user26",
                           "text": "This video hit differently!",
                           "timestamp": "2025-02-13T22:30:00Z"
@@ -439,7 +439,7 @@ export const videoData= [
                           "category": "Music",
                           "comments": [
                             {
-                              "commentId": "comment31",
+                              "username": "comment31",
                               "userId": "user31",
                               "text": "An iconic hit that took the world by storm!",
                               "timestamp": "2025-02-14T00:00:00Z"
@@ -462,7 +462,7 @@ export const videoData= [
                           "category": "Music",
                           "comments": [
                             {
-                              "commentId": "comment32",
+                              "username": "comment32",
                               "userId": "user32",
                               "text": "This song is a timeless classic!",
                               "timestamp": "2025-02-14T00:30:00Z"
@@ -485,7 +485,7 @@ export const videoData= [
                           "category": "Music",
                           "comments": [
                             {
-                              "commentId": "comment33",
+                              "username": "comment33",
                               "userId": "user33",
                               "text": "This song always puts me in a good mood!",
                               "timestamp": "2025-02-14T01:00:00Z"
@@ -509,7 +509,7 @@ export const videoData= [
                           "category": "Music",
                           "comments": [
                             {
-                              "commentId": "comment35",
+                              "username": "comment35",
                               "userId": "user35",
                               "text": "Such a fun, empowering song!",
                               "timestamp": "2025-02-14T02:00:00Z"
@@ -532,7 +532,7 @@ export const videoData= [
                           "category": "Music",
                           "comments": [
                             {
-                              "commentId": "comment36",
+                              "username": "comment36",
                               "userId": "user36",
                               "text": "Such a unique song and video!",
                               "timestamp": "2025-02-14T02:30:00Z"
@@ -555,7 +555,7 @@ export const videoData= [
                           "category": "Music",
                           "comments": [
                             {
-                              "commentId": "comment37",
+                              "username": "comment37",
                               "userId": "user37",
                               "text": "Such an energetic song!",
                               "timestamp": "2025-02-14T03:00:00Z"
@@ -578,7 +578,7 @@ export const videoData= [
                           "category": "People & Blogs",
                           "comments": [
                             {
-                              "commentId": "comment38",
+                              "username": "comment38",
                               "userId": "user38",
                               "text": "Great to see the history of YouTube!",
                               "timestamp": "2025-02-14T03:30:00Z"
@@ -603,7 +603,7 @@ export const videoData= [
                           "uploadDate": "2021-05-20",
                           "comments": [
                             {
-                              "commentId": "comment1",
+                              "username": "comment1",
                               "userId": "user4",
                               "text": "Epic gameplay, those reflexes are insane!",
                               "timestamp": "2025-02-14T05:00:00Z"
@@ -649,7 +649,7 @@ export const videoData= [
                           "category": "Education",
                           "comments": [
                             {
-                              "commentId": "comment1",
+                              "username": "comment1",
                               "userId": "user1",
                               "text": "My kids love this song!",
                               "timestamp": "2025-02-13T10:00:00Z"
@@ -672,7 +672,7 @@ export const videoData= [
                           "category": "Music",
                           "comments": [
                             {
-                              "commentId": "comment2",
+                              "username": "comment2",
                               "userId": "user2",
                               "text": "Still a hit in 2025!",
                               "timestamp": "2025-02-13T10:30:00Z"
@@ -695,7 +695,7 @@ export const videoData= [
                           "category": "Education",
                           "comments": [
                             {
-                              "commentId": "comment3",
+                              "username": "comment3",
                               "userId": "user3",
                               "text": "My toddler can't get enough of this!",
                               "timestamp": "2025-02-13T11:00:00Z"
@@ -718,7 +718,7 @@ export const videoData= [
                           "category": "Education",
                           "comments": [
                             {
-                              "commentId": "comment4",
+                              "username": "comment4",
                               "userId": "user4",
                               "text": "Great song for bath time!",
                               "timestamp": "2025-02-13T11:30:00Z"
@@ -741,7 +741,7 @@ export const videoData= [
                           "category": "Music",
                           "comments": [
                             {
-                              "commentId": "comment5",
+                              "username": "comment5",
                               "userId": "user5",
                               "text": "This song never gets old.",
                               "timestamp": "2025-02-13T12:00:00Z"

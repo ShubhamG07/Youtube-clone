@@ -261,7 +261,7 @@ body a{
     top: 80px;
     display: flex;
     flex-direction: column;
-    z-index: -100;
+    z-index: 1;
   }
 
   .sidebar p{
@@ -279,9 +279,13 @@ body a{
   }
 
   .sidebaritem:hover{
-    background-color: #e6e7e9;
+    background-color: #b9bbbe;
     border-radius: 5px;
     cursor: pointer;
+  }
+
+  .sidebaritem a{
+    text-decoration: none;
   }
 
   /* videolist styling  */
@@ -404,7 +408,7 @@ body a{
   position: relative;
   top: 70px;
   left: 40px;
-  width: 66%;
+  width: 63%;
 }
 
 .reactplayer{
@@ -511,6 +515,52 @@ body a{
   margin: 10px;
 }
 
+/* suggested video styling  */
+
+.suggested{
+  width: 28%;
+  position: absolute;
+  top: 70px;
+  right: 40px;
+  /* border: 2px solid black; */
+  padding: 5px;
+}
+
+/* suggested item styling  */
+
+.suggesteditem{
+  width: 100%;
+  display: flex;
+  margin: 10px;
+}
+
+.suggesteditem p{
+  font-size: 12px;
+  margin: 2px;
+}
+
+.suggesteditem h3{
+  font-size: 15px;
+  color: black;
+  font-weight: 500;
+  margin: 5px 0px;
+  max-height: 35px;
+overflow: hidden;
+}
+
+.suggestedimage img{
+  width: 170px;
+  height: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.suggesteditemdetails{
+  /* width: 60%; */
+  margin-left: 5px;
+}
+
+
 /* signup and login page styling  */
 
 .signup{
@@ -561,7 +611,169 @@ body a{
   background-color: green;
 }
 
+/* profile page styling  */
+
+.profile-container{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 50px;
+}
+
+.profileformcontainer{
+  width: 50%;
+  height: 70%;
+  margin-top: 50px;
+  border-radius: 20px;
+  padding: 20px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileformcontainer input{
+  width: 90%;
+  padding: 10px;
+  margin: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+
+/* comment section  */
+
+.commentsection{
+  display: flex;
+}
+
+.commentsection input{
+  width: 52vw;
+  border: none;
+  border-bottom: 0.5px solid grey;
+  font-size: 16px;
+  padding: 5px;
+  outline: none;
+  font-weight: 500;
+}
+
+.commentsection input:focus {
+  border-bottom: 2px solid rgb(18, 18, 19);
+}
+
+.commentnamelogo{
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  border-radius: 50%;
+  background-color: green;
+  color: white;
+}
+
+.comment-button{
+margin-top: 10px;
+font-size: 16px;
+padding: 10px;
+border-radius: 20px;
+border: none;
+font-weight: 500;
+width: 100px;
+}
+
+
+.comment-button:hover{
+  background-color: rgb(97, 54, 253);
+  color: white;
+}
+
+
+
+.commentdata{
+  width: 62vw;
+  display: flex;
+  padding: 10px;
+  margin: 40px 0px;
+  position: relative;
+}
+
+.add-comment{
+  margin-left: 20px;
+}
+
+.add-comment span{
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.add-comment p{
+  margin: 10px;
+}
+
+.commentinput input{
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+  color: black;
+  width: 52vw;
+  background: none;
+}
+
+.commentinput input:focus{
+  border-bottom: 2px solid rgb(18, 18, 19);
+}
+
+.edit-delete{
+  position: absolute;
+  right: 35px;
+  top: 5px;
+}
+
+.small-modal{
+  height: 70px;
+  width: 100px;
+  position: absolute;
+  right: 45px;
+  top: 5px;
+  border-radius: 10px;
+  box-shadow: 0.5px 0.5px 1px 1px rgb(204, 202, 202);
+  border: none;
+  padding: 10px;
+}
+
+.small-modal p{
+  margin: 15px 0px;
+  cursor: pointer;
+}
+
+.edit-actions{
+  position: absolute;
+  right:20px;
+  top:60px;
+}
+
+.commenteditbutton{
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 20px;
+  margin: 0px 10px 20px 10px;
+  border: none;
+  width: 100px;
+}
+
+.commenteditbutton:hover{
+  background-color: #b9bbbe;
+}
+
   /* some common classes  */
+
+
+  .hide{
+    display: none;
+  }
 
   .mlr-10{
     margin-left: 10px;
@@ -575,6 +787,19 @@ body a{
   .bb-2{
     padding: 10px;
     border-bottom: 0.5px solid rgb(211, 203, 203);
+  }
+
+  .bt-2{
+    padding: 10px;
+    border-top: 0.5px solid rgb(211, 203, 203);
+  }
+
+  .mt-10{
+    margin-top: 20px;
+  }
+
+  .mr-10{
+    margin-right: 10px;
   }
 
   .svg-2{
@@ -640,6 +865,11 @@ body a{
     font-size: 15px;
     font-weight: 500;
     line-height: 5px;
+  }
+
+  .suggestedgrey{
+    color: grey;
+    font-weight: 500;
   }
 
   .shift-right{

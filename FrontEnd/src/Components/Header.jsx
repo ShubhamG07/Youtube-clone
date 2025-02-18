@@ -42,6 +42,7 @@ function Header(){
     try {
         await axios.post("http://localhost:3000/users/logout", {}, { withCredentials: true });
         dispatch(logout()); // Update Redux state
+        setIsUserMenuOpen(!isUserMenuOpen);
     } catch (error) {
         console.error("Logout failed", error);
     }
@@ -168,6 +169,7 @@ dispatch(checkAuthStatus());
                     <p><i className="fa-regular fa-flag fa-lg mlr-10"></i>Report History</p>
                     <p><i className="fa-solid fa-question fa-lg mlr-10"></i>Help</p>
                     <p><i class="fa-regular fa-message fa-lg mlr-10"></i>Send Feedback</p>
+                    <p onClick={handleLogout} className=" bbuser"><i className="fa-solid fa-arrow-right-from-bracket fa-xl mlr-15"></i>Sign Out</p>
                 </section>
 
                 <section className="p-10 sm-grey">
@@ -213,10 +215,10 @@ dispatch(checkAuthStatus());
 {/* usermenu and create channel  */}
 
 {isAuthenticated?<div className="create-channel"><i className="fa-solid fa-plus fa-lg"></i> Create Channel</div>:""}
-{isAuthenticated?<div><div className="namelogo" onClick={toggleUserMenu}>{user.fullname.charAt(0).toUpperCase()}</div>{isUserMenuOpen? <div className="usermodal">
+{isAuthenticated?<div><div className="namelogo" onClick={toggleUserMenu}> {user && user.fullname?user.fullname.charAt(0).toUpperCase():"U"}</div>{isUserMenuOpen? <div className="usermodal">
   
   <div className="email-name">
-  <div><p className="namelogomodal" >{user.fullname.charAt(0).toUpperCase()}</p> </div>
+  <div><p className="namelogomodal" > {user && user.fullname?user.fullname.charAt(0).toUpperCase():"U"}</p> </div>
   <div><p>{user.fullname}</p>
   <p>@{user.username}</p>
   </div>

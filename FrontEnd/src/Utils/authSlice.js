@@ -35,7 +35,7 @@ const authSlice = createSlice({
             state.error = null;
         },
         updateProfile: (state, action) => {
-            state.user = action.payload;
+            state.user = { ...state.user, ...action.payload }; 
         },
     },
 });
@@ -55,13 +55,11 @@ export const checkAuthStatus = () => async (dispatch) => {
      
     } catch (error) {
         // If there's an error (invalid or expired token), log out the user
+        const res =  await axios.get("http://localhost:3000/users/logout", { withCredentials: true });
         dispatch(logout());
     }
 };
 
-export const updateUser = (updatedUser) => (dispatch) => {
-    dispatch(loginSuccess({user:payload}));
-};
 
 export default authSlice.reducer;
 
