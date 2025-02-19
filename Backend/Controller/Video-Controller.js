@@ -1,4 +1,5 @@
 import Video from "../Model/Video.js";
+import User from "../Model/User.js";
 
 // get videos
 export const getVideos = async (req, res) => {
@@ -117,3 +118,73 @@ export const deleteComment =async (req, res) => {
       res.status(500).json({ error: "Error deleting comment" });
     }
   }
+
+
+  // like a video 
+
+  export const likeVideo = async (req, res) => {
+    try {
+      const user = await User.findById(req.params.userId);
+      const video = await Video.findById(req.params.videoId);
+      if (!user || !video) return res.status(404).json({ error: "User or Video not found" });
+  
+      // Remove from dislikes if already disliked
+      if (user.dislikedVideos.includes(video._id)){
+        video.dislikes -= 1;
+        user.dislikedVideos = user.dislikedVideos.filter((id) => id.toString() !== video._id.toString());
+  }
+      
+      
+  
+      if (user.likedVideos.includes(video._id)) {
+        // If already liked, remove the like
+        user.likedVideos = user.likedVideos.filter((id) => id.toString() !== video._id.toString());
+        video.likes -= 1;
+      } else {
+        // Otherwise, add to likedVideos
+        user.likedVideos.push(video._id);
+        video.likes +=1;
+      }
+  
+      await user.save();
+      await video.save();
+      res.status(200).json({ likedVideos: user.likedVideos, dislikedVideos: user.dislikedVideos, likeCount: video.likes,
+        dislikeCount: video.dislikes });
+    } catch (error) {
+      res.status(500).json({ error: "Error updating like" });
+    }
+  }
+
+  // dislike a video 
+
+export const dislikeVideo = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    const video = await Video.findById(req.params.videoId);
+    if (!user || !video) return res.status(404).json({ error: "User or Video not found" });
+
+    // Remove from likes if already liked
+    if (user.likedVideos.includes(video._id)){
+      video.likes -= 1;
+      user.likedVideos = user.likedVideos.filter((id) => id.toString() !== video._id.toString());
+}
+    
+
+    if (user.dislikedVideos.includes(video._id)) {
+      // If already disliked, remove the dislike
+      user.dislikedVideos = user.dislikedVideos.filter((id) => id.toString() !== video._id.toString());
+      video.dislikes -= 1;
+    } else {
+      // Otherwise, add to dislikedVideos
+      user.dislikedVideos.push(video._id);
+      video.dislikes +=1;
+    }
+
+    await user.save();
+    await video.save();
+    res.status(200).json({ likedVideos: user.likedVideos, dislikedVideos: user.dislikedVideos , likeCount: video.likes,
+      dislikeCount: video.dislikes });
+  } catch (error) {
+    res.status(500).json({ error: "Error updating dislike" });
+  }
+}

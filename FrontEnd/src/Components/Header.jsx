@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMenuOpen } from "../Utils/menuSlice";
 import axios from "axios";
 import { logout,loginSuccess,checkAuthStatus } from "../Utils/authSlice";
+import { updateProfile } from "../Utils/authSlice";
 
 
 
@@ -18,6 +19,9 @@ function Header(){
     const[searchedText,seSearchedText]=useState("");
     const dispatch =useDispatch();
     const { isAuthenticated,user } = useSelector((state) => state.auth);
+    const[channelMenu,setChannelMenu]=useState(false);
+    const [channelName, setChannelName] = useState("");
+    const [channelHandle, setChannelHandle] = useState("");
 
     console.log("isauth",isAuthenticated,user);
 
@@ -42,10 +46,40 @@ function Header(){
     try {
         await axios.post("http://localhost:3000/users/logout", {}, { withCredentials: true });
         dispatch(logout()); // Update Redux state
-        setIsUserMenuOpen(!isUserMenuOpen);
+        setIsUserMenuOpen(false);
     } catch (error) {
         console.error("Logout failed", error);
     }
+};
+
+// function to show channel menu 
+
+function toggleChannelMenu(){
+  setChannelMenu(!channelMenu);
+}
+
+// function to create a channel 
+
+const handleCreateChannel = async () => {
+  if (!user) return navigate('/login');
+ 
+
+  try {
+
+    e.preventDefault();
+    const response = await axios.post(
+      "http://localhost:3000/channel/create",
+      { channelName, channelHandle, user_id:user._id }
+    );
+
+    const res = await axios.put("http://localhost:3000/users/channel/channeladded",{user_id:user._id}, { withCredentials: true });
+    dispatch(updateProfile(res.data)); 
+    setChannelMenu(false);
+    navigate("/");
+
+  } catch (error) {
+    alert(error.response?.data?.error || "Error creating channel");
+  }
 };
 
 
@@ -169,7 +203,7 @@ dispatch(checkAuthStatus());
                     <p><i className="fa-regular fa-flag fa-lg mlr-10"></i>Report History</p>
                     <p><i className="fa-solid fa-question fa-lg mlr-10"></i>Help</p>
                     <p><i class="fa-regular fa-message fa-lg mlr-10"></i>Send Feedback</p>
-                    <p onClick={handleLogout} className=" bbuser"><i className="fa-solid fa-arrow-right-from-bracket fa-xl mlr-15"></i>Sign Out</p>
+                    <p onClick={handleLogout} ><i className="fa-solid fa-arrow-right-from-bracket fa-xl mlr-15"></i>Sign Out</p>
                 </section>
 
                 <section className="p-10 sm-grey">
@@ -214,7 +248,34 @@ dispatch(checkAuthStatus());
 
 {/* usermenu and create channel  */}
 
-{isAuthenticated?<div className="create-channel"><i className="fa-solid fa-plus fa-lg"></i> Create Channel</div>:""}
+{isAuthenticated?<div onClick={toggleChannelMenu} className="create-channel pointer"><i className="fa-solid fa-plus fa-lg"></i> Create Channel</div>:""}
+
+{channelMenu?<div className="channel-Modal">
+  
+<div className="channeluserlogo" ><p><i className="fa-solid fa-user fa-2xl"></i></p></div>
+  <h2>Create a Channel</h2>
+  <form onSubmit={handleCreateChannel}>
+  
+      <input
+        type="text"
+        placeholder="Channel Name"
+        value={channelName}
+        onChange={(e) => setChannelName(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Channel Handle"
+        value={channelHandle}
+        onChange={(e) => setChannelHandle(e.target.value)}
+       required
+      />
+      
+      <button type="submit" className="createchannelbutton">Create Channel</button>
+      <button className="cancelbutton" onClick={toggleChannelMenu}>Cancel</button>
+      </form>
+</div>:""}
+
 {isAuthenticated?<div><div className="namelogo" onClick={toggleUserMenu}> {user && user.fullname?user.fullname.charAt(0).toUpperCase():"U"}</div>{isUserMenuOpen? <div className="usermodal">
   
   <div className="email-name">

@@ -8,11 +8,13 @@ function Comment(props){
     const comment=props.data;
     const id= props.vid;
     const {comments, setComments,newComment,setNewComment}=props.cdata;
-    const { user } = useSelector((state) => state.auth);
+    const { isAuthenticated, user } = useSelector((state) => state.auth);
     const[editMenu,setEditMenu]=useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editedText, setEditedText] = useState(comment.text);
     const inputRef = useRef(null);
+
+    console.log("all comments props",comments);
 
       // Focus input when `isEditing` is true
   useEffect(() => {
@@ -67,12 +69,11 @@ function Comment(props){
         `http://localhost:3000/videos/${id}/comments/${cid}`,
         {  
             text: editedText,
-            user_id:user.id
+            user_id:user._id
          },{withCredentials: true }
       );
 
       setComments(comments.map((c) => (c._id === cid? response.data : c)));
-      setEditedText("");
     } catch (error) {
       console.error("Error updating comment:", error);
     }
@@ -115,7 +116,7 @@ function Comment(props){
         <div className="add-comment">
          <div className={isEditing?"hide":""}><span>@{comment.username}</span> <span className='grey'> {timeAgo(comment.timestamp)}</span></div>
          <p className='commentinput'><input type="text" value={editedText} disabled={!isEditing} ref={inputRef} onChange={(e) => setEditedText(e.target.value)} /></p>
-        {comment.userId==user._id?<div className='edit-delete' onClick={toggleEditMenu}><i className="fa-solid fa-ellipsis-vertical fa-lg"></i></div>:""}
+        {isAuthenticated ? (comment.userId==user._id?<div className='edit-delete' onClick={toggleEditMenu}><i className="fa-solid fa-ellipsis-vertical fa-lg"></i></div>:""):""}
       {editMenu?<div className='small-modal' onClick={handleEdit}><p><i className="fa-solid fa-pencil fa-lg mr-10"></i>Edit</p> 
       <p onClick={()=>handleDeleteComment(comment._id)}><i className="fa-solid fa-trash fa-lg mr-10"></i>Delete</p></div>:""}
         </div>

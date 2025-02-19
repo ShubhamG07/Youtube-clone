@@ -15,6 +15,8 @@ function VideoPlayer(){
     const [newComment, setNewComment] = useState("");
     const navigate=useNavigate();
     const { isAuthenticated,user } = useSelector((state) => state.auth);
+    const [userLiked, setUserLiked] = useState(false);
+    const [userDisliked, setUserDisliked] = useState(false);
 
     // fetching video from backend api using id attribute from link 
 
@@ -25,7 +27,56 @@ function VideoPlayer(){
        // fetching comments for a particular video 
        useEffect(() => {
         fetchComments();
+        fetchUserLikes();
       }, [id]);
+
+      // Fetch user liked/disliked videos
+  const fetchUserLikes = async () => {
+    if (!user) return;
+
+    try {
+      const response = await axios.get("http://localhost:3000/users/profile", { withCredentials: true });
+      setUserLiked(response.data.likedVideos.includes(id));
+      setUserDisliked(response.data.dislikedVideos.includes(id));
+    } catch (error) {
+      console.error("Error fetching user like status:", error);
+    }
+  }; 
+
+   // Handle Like
+   const handleLike = async () => {
+    if (!user) return navigate("/login");
+
+    try {
+      await axios.post(
+        `http://localhost:3000/videos/${user._id}/like/${id}`,
+        {} 
+      );
+
+      setUserLiked(!userLiked);
+      setUserDisliked(false); // Remove dislike if user liked
+    } catch (error) {
+      console.error("Error liking video:", error);
+    }
+  };
+
+  // Handle Dislike
+  const handleDislike = async () => {
+    if (!user) return  navigate("/login");
+
+    try {
+      await axios.post(
+        `http://localhost:3000/videos/${user._id}/dislike/${id}`,
+        {}
+      );
+
+      setUserDisliked(!userDisliked);
+      setUserLiked(false); // Remove like if user disliked
+    } catch (error) {
+      console.error("Error disliking video:", error);
+    }
+  };
+
     
       // Fetch Comments
       const fetchComments = async () => {
@@ -168,8 +219,8 @@ function VideoPlayer(){
         </div>  
 
         <div >
-            <button className="likebutton"><i className="fa-solid fa-thumbs-up fa-xl"></i> &nbsp;{formatViews(data.likes)}</button>
-            <button className="dislikebutton"><i className="fa-solid fa-thumbs-down fa-flip-horizontal fa-xl"></i> </button>
+            <button onClick={handleLike} className={`likebutton ${userLiked?"activelike":""}`}><i className="fa-solid fa-thumbs-up fa-xl"></i> &nbsp;{formatViews(data.likes)}</button>
+            <button onClick={handleDislike} className={`dislikebutton ${userDisliked?"activelike":""}`}><i className="fa-solid fa-thumbs-down fa-flip-horizontal fa-xl"></i> </button>
             <button className="sharebutton"><i className="fa-solid fa-share fa-xl mlr-10"></i> Share</button>
             <button className="sharebutton"><i className="fa-solid fa-download fa-xl mlr-10"></i> Download</button>
         </div> 

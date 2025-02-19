@@ -18,6 +18,12 @@ const userSignupSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
+    },
+    likedVideos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }], 
+    dislikedVideos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
+    channelCreated :{
+        type:Boolean,
+        default:false
     }
 });
 

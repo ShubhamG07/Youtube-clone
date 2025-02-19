@@ -22,15 +22,11 @@ export const signupUser= async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create new user
-        const newUser = new User({ fullname, username, email, password: hashedPassword });
+        const newUser = new User({ fullname, username, email, password: hashedPassword, likedVideos:[],dislikedVideos:[],channelCreated:false });
         await newUser.save();
 
-        // Generate JWT token
-        const token = jwt.sign({ id: newUser._id }, jwtKey, { expiresIn: "2h" });
-
-        // Set token in cookies
-        res.cookie("token", token, { httpOnly: true, secure: false, sameSite: "strict" });
-        res.status(201).json({ message: "User registered successfully! Redirecting to Signin Page...", token, user: newUser });
+      
+        res.status(201).json({ message: "User registered successfully! Redirecting to Signin Page...",  user: newUser });
     } catch (error) {
         res.status(500).json({ error: "Error registering user" });
     }
@@ -98,6 +94,23 @@ export const updateProfile = async (req, res) => {
         const updatedUser = await User.findByIdAndUpdate(
             verified.id,
             { fullname ,username},
+            { new: true, select: "-password" }
+        );
+
+        res.json({ message: "Profile updated successfully", updatedUser });
+    } catch (error) {
+        res.status(500).json({ error: "Error updating profile" });
+    }
+}
+
+export const channelAdded = async (req, res) => {
+    try {
+       const {user_id} = req.body;
+
+
+        const updatedUser = await User.findByIdAndUpdate(
+            user_id,
+            { channelCreated:true},
             { new: true, select: "-password" }
         );
 

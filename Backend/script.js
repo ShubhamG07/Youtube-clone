@@ -7,6 +7,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import userRouter from "./Routes/User-Route.js";
 import cookieParser from "cookie-parser";
+import channelRouter from "./Routes/Channel-Routes.js";
 
 
 dotenv.config();
@@ -75,4 +76,4 @@ app.use(
   // Routes
 app.use("/videos", videoRouter);
 app.use("/users",userRouter);
-
+app.use("/channel",channelRouter);

@@ -1,5 +1,5 @@
 import express from "express";
-import { signupUser,signinUser,logoutUser,userProfile,updateProfile } from "../Controller/User-Contoller.js";
+import { signupUser,signinUser,logoutUser,userProfile,updateProfile,channelAdded } from "../Controller/User-Contoller.js";
 
 const userRouter =express.Router();
 
@@ -16,6 +16,7 @@ userRouter.post("/signin", checkLoggedIn, signinUser);
 userRouter.post("/logout", logoutUser);
 userRouter.get("/profile", userProfile);
 userRouter.put("/profile", updateProfile);
+userRouter.put("/channel/channeladded",channelAdded);
 
 
 export default userRouter;
