@@ -2,6 +2,7 @@ import "../styles.css"
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Signup(){
     
@@ -29,7 +30,7 @@ function Signup(){
               },2000);
         } catch (error) {
             if(error.response.status==403){
-                navigate("/profile");
+                navigate("/");
             }
             setMessage(error.response?.data?.error || "Signup failed");
         }
@@ -46,6 +47,7 @@ function Signup(){
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 <button className="signupbutton" type="submit">Sign Up</button>
             </form>
+            <Link to='/login'><p>Login</p></Link>
             {message && <p>{message}</p>}
             </div>
            

@@ -42,8 +42,6 @@ export const getChannel = async (req, res) => {
 // Get Videos by Channel Handle
 export const getChannelVideos = async (req, res) => {
   try {
-    const channel = await Channel.findOne({ channelHandle: req.params.handle });
-    if (!channel) return res.status(404).json({ error: "Channel not found" });
 
     // Fetch videos where `uploader` matches the channel handle
     const videos = await Video.find({ uploader: req.params.handle });

@@ -10,6 +10,7 @@ const VideoPlayer = lazy(() => import("./Components/Videoplayer.jsx"));
 const Signup= lazy(()=> import("./Components/Signup.jsx"));
 const Login= lazy(()=> import("./Components/Login.jsx"));
 const Profile= lazy(()=> import("./Components/Profile.jsx"));
+const Channel= lazy(()=> import("./Components/Channel.jsx"));
 
 const appRouter= createBrowserRouter([
 
@@ -78,6 +79,20 @@ const appRouter= createBrowserRouter([
           }
         >
           <Profile />
+        </Suspense>
+      )
+    },
+
+    {path:"/channel/:userid",
+      element:(
+        <Suspense
+          fallback={
+            <div>
+              <h1>Please wait while we are Lazy Loading this...</h1>
+            </div>
+          }
+        >
+          <Channel />
         </Suspense>
       )
     }

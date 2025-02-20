@@ -60,13 +60,14 @@ function toggleChannelMenu(){
 
 // function to create a channel 
 
-const handleCreateChannel = async () => {
+const handleCreateChannel = async (e) => {
   if (!user) return navigate('/login');
+  e.preventDefault();
  
 
   try {
 
-    e.preventDefault();
+   
     const response = await axios.post(
       "http://localhost:3000/channel/create",
       { channelName, channelHandle, user_id:user._id }
@@ -248,7 +249,7 @@ dispatch(checkAuthStatus());
 
 {/* usermenu and create channel  */}
 
-{isAuthenticated?<div onClick={toggleChannelMenu} className="create-channel pointer"><i className="fa-solid fa-plus fa-lg"></i> Create Channel</div>:""}
+{isAuthenticated?(user.channelCreated?"":<div onClick={toggleChannelMenu} className="create-channel pointer"><i className="fa-solid fa-plus fa-lg"></i> Create Channel</div>):""}
 
 {channelMenu?<div className="channel-Modal">
   
@@ -282,6 +283,7 @@ dispatch(checkAuthStatus());
   <div><p className="namelogomodal" > {user && user.fullname?user.fullname.charAt(0).toUpperCase():"U"}</p> </div>
   <div><p>{user.fullname}</p>
   <p>@{user.username}</p>
+  {user.channelCreated?<Link to={`/channel/${user._id}`}><p onClick={toggleUserMenu}>View your channel</p></Link>:''}
   </div>
   </div>
   

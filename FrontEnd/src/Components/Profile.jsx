@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { updateProfile } from "../Utils/authSlice";
 import "../styles.css"
+import { Link } from "react-router-dom";
 
 const UserProfile = () => {
     const dispatch = useDispatch();
@@ -66,6 +67,9 @@ const UserProfile = () => {
             <div className="biglogoname">
                 {user?.fullname?user.fullname.charAt(0).toUpperCase():"U"}
                 </div>
+                <div className="ml-20"><p>  {user?.fullname?user.fullname:""}</p>
+                <p className="profileusername">@{user?user.username:""} • {user?.channelCreated?<Link to={`/channel/${user._id}`}>View channel</Link>:"" } </p>
+                 </div>
             </div>
             <div className="profileformcontainer">
             <h2>User Profile</h2>

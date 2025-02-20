@@ -627,6 +627,9 @@ overflow: hidden;
   border-radius: 20px;
   padding: 20px;
   border: 2px solid black;
+  position: relative;
+  top: 100px;
+  right: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -639,6 +642,34 @@ overflow: hidden;
   font-size: 16px;
   border-radius: 10px;
   border: 1px solid grey;
+}
+
+.name-username-data{
+  display: flex;
+  font-size: 30px;
+  position: relative;
+  left: 150px;
+  top: 20px;
+}
+
+.name-username-data p{
+  margin: 5px 0px;
+}
+
+.biglogoname{
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  background-color: green;
+  color: white;
+  font-size: 70px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.profileusername{
+  font-size: 15px;
+  color: rgb(99, 98, 98);
 }
 
 /* comment section  */
@@ -768,7 +799,7 @@ width: 100px;
   background-color: #b9bbbe;
 }
 
-/* channel modal & channel page styling  */
+/* channel modal  styling  */
 
 .channel-Modal{
   width: 70vw;
@@ -849,6 +880,63 @@ width: 100px;
   margin-left: 15px;
 }
 
+/* channel page styling  */
+
+.channel{
+  position: relative;
+  left: 100px;
+  width: 90vw;
+}
+
+.channel-upper{
+  position: relative;
+  top: 100px;
+  height: 30vh;
+  /* border: 2px solid black; */
+  display: flex;
+}
+
+.channelpagelogo{
+  height: 170px;
+  width: 170px;
+  font-size: 130px;
+  background-color: green;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.channelname{
+  font-size: 50px;
+  margin: 0px;
+}
+
+.channelusername{
+font-size: 20px;
+margin: 5px;
+}
+
+.channel-lower{
+  position: relative;
+  top: 90px;
+  /* border: 2px solid black; */
+}
+
+.bb2channel{
+  border-bottom: 2px solid black;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.videolistchannel{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  left:0px;
+  top: 20px;
+  width: 80vw;
+}
 
   /* some common classes  */
 
@@ -865,6 +953,8 @@ width: 100px;
   .ml-5{
     margin-left: 5px;
   }
+
+  
 
   .bb-2{
     padding: 10px;

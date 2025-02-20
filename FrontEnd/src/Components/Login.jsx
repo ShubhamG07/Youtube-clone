@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginSuccess } from "../Utils/authSlice";
+import { Link } from "react-router-dom";
 
 function Login(){
 
@@ -44,6 +45,7 @@ function Login(){
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 <button className="signupbutton" type="submit">Login</button>
             </form>
+            <Link to='/register'><p>Signup</p></Link>
             {message && <p>{message}</p>}
             </div>
            
