@@ -117,7 +117,7 @@ function Comment(props){
          <div className={isEditing?"hide":""}><span>@{comment.username}</span> <span className='grey'> {timeAgo(comment.timestamp)}</span></div>
          <p className='commentinput'><input type="text" value={editedText} disabled={!isEditing} ref={inputRef} onChange={(e) => setEditedText(e.target.value)} /></p>
         {isAuthenticated ? (comment.userId==user._id?<div className='edit-delete' onClick={toggleEditMenu}><i className="fa-solid fa-ellipsis-vertical fa-lg"></i></div>:""):""}
-      {editMenu?<div className='small-modal' onClick={handleEdit}><p><i className="fa-solid fa-pencil fa-lg mr-10"></i>Edit</p> 
+      {editMenu?<div className='small-modal' ><p onClick={handleEdit}><i className="fa-solid fa-pencil fa-lg mr-10"></i>Edit</p> 
       <p onClick={()=>handleDeleteComment(comment._id)}><i className="fa-solid fa-trash fa-lg mr-10"></i>Delete</p></div>:""}
         </div>
 

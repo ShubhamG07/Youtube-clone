@@ -3,15 +3,17 @@ import axios from "axios";
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { useSelector } from "react-redux";
-import VideoItem from "./Videoitem";
+import ChannelVideoItem from "./ChannelVideoItem";
+import { useDispatch,useSelector } from "react-redux";
+import { setVideos } from "../Utils/videoSLice";
 
 
 function Channel(){
 
 const {userid } = useParams();
+const dispatch=useDispatch();
+const videos=useSelector((state)=>state.video.videos);
 const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
-  const [videos, setVideos] = useState([]);
   const [channel, setChannel] = useState(null);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
   // Fetch channel info
   const fetchChannel = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/channel/${userid}`);
+      const response = await axios.get(`http://localhost:3000/channel/${userid}`, { withCredentials: true });
       setChannel(response.data);
     } catch (error) {
       console.error("Error fetching channel:", error);
@@ -34,8 +36,8 @@ const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
   // Fetch videos by channel handle
   const fetchVideos = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/channel/mychannel/videos`);
-      setVideos(response.data);
+      const response = await axios.get(`http://localhost:3000/channel/mychannel/videos`, { withCredentials: true });
+      dispatch(setVideos(response.data));
     } catch (error) {
       console.error("Error fetching videos:", error);
     }
@@ -64,7 +66,8 @@ const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
       <div className={"videolistchannel"}>
       {videos
             ? videos.map((v) => (
-                <VideoItem key={v._id} data={v} />
+              
+                <ChannelVideoItem key={v._id} data={v} />
               ))
             : ""}
         </div>
