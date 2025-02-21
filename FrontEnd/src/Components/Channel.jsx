@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setVideos } from "../Utils/videoSLice";
 
 function Channel() {
-  const { userid } = useParams();
+  const { handle } = useParams();
   const dispatch = useDispatch();
   const videos = useSelector((state) => state.video.videos);
   const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
@@ -17,7 +17,7 @@ function Channel() {
   useEffect(() => {
     fetchChannel();
     fetchVideos();
-  }, [userid]);
+  }, [handle]);
 
   console.log("user id channale", channel);
 
@@ -25,7 +25,7 @@ function Channel() {
   const fetchChannel = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/channel/${userid}`,
+        `http://localhost:3000/channel/${handle}`,
         { withCredentials: true }
       );
       setChannel(response.data);
@@ -68,7 +68,7 @@ function Channel() {
             <p className="bb2channel block">Videos</p>
             <div className={"videolistchannel"}>
               {videos
-                ? videos.map((v) => <ChannelVideoItem key={v._id} data={v} />)
+                ? videos.map((v) => <ChannelVideoItem key={v._id} data={v} handle={handle} />)
                 : ""}
             </div>
           </div>

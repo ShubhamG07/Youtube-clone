@@ -1,6 +1,7 @@
 import Video from "../Model/Video.js";
 import User from "../Model/User.js";
 
+
 // get videos
 export const getVideos = async (req, res) => {
   try {
@@ -207,6 +208,7 @@ export const dislikeVideo = async (req, res) => {
 // Update Video Details
 export const updateVideo = async (req, res) => {
   try {
+
     const video = await Video.findById(req.params.id);
     if (!video) return res.status(404).json({ message: "Video not found" });
 
@@ -227,6 +229,8 @@ export const updateVideo = async (req, res) => {
 // Delete Video
 export const deleteVideo = async (req, res) => {
   try {
+   
+
     const video = await Video.findById(req.params.id);
     if (!video) return res.status(404).json({ message: "Video not found" });
 

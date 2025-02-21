@@ -55,7 +55,7 @@ export const checkAuthStatus = () => async (dispatch) => {
     dispatch(loginSuccess({ user: res.data }));
   } catch (error) {
     // If there's an error (invalid or expired token), log out the user
-    const res = await axios.get("http://localhost:3000/users/logout", {
+    const res = await axios.post("http://localhost:3000/users/logout", {
       withCredentials: true,
     });
     dispatch(logout());

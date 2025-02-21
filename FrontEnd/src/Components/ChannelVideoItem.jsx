@@ -2,16 +2,18 @@ import { useState, useEffect, lazy } from "react";
 import "../styles.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { updateVideo, deleteVideo } from "../Utils/videoSLice";
 
 function ChannelVideoItem(props) {
   const data = props.data;
+  const handle=props.handle;
   const [isLoaded, setIsLoaded] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [title, setTitle] = useState(data.title);
   const [description, setDescription] = useState(data.description);
   const [editMenu, setEditMenu] = useState(false);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
@@ -168,6 +170,7 @@ function ChannelVideoItem(props) {
                 </p>
               </div>
             </div>
+            {isAuthenticated?(handle==user.channel?
             <div className="edit-delete-channelvideo">
             <p>
               <i
@@ -187,7 +190,7 @@ function ChannelVideoItem(props) {
             ) : (
               ""
             )}
-          </div>
+          </div>:""):""}
           </div>
         </div>
       )}

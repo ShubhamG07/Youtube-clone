@@ -74,7 +74,7 @@ const UserProfile = () => {
           <p className="profileusername">
             @{user ? user.username : ""} •{" "}
             {user?.channelCreated ? (
-              <Link to={`/channel/${user._id}`}>View channel</Link>
+              <Link to={`/channel/${user.channel}`}>View channel</Link>
             ) : (
               ""
             )}{" "}

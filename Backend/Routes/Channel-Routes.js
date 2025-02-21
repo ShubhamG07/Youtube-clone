@@ -8,7 +8,7 @@ import {
 const channelRouter = express.Router();
 
 channelRouter.post("/create", createChannel);
-channelRouter.get("/:userid", getChannel);
+channelRouter.get("/:handle", getChannel);
 channelRouter.get("/:handle/videos", getChannelVideos);
 
 export default channelRouter;

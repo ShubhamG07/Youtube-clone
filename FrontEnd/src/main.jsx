@@ -83,7 +83,7 @@ const appRouter= createBrowserRouter([
       )
     },
 
-    {path:"/channel/:userid",
+    {path:"/channel/:handle",
       element:(
         <Suspense
           fallback={

@@ -489,6 +489,8 @@ function Header() {
               placeholder="Channel Handle"
               value={channelHandle}
               onChange={(e) => setChannelHandle(e.target.value)}
+              pattern="^\S*$"  // No spaces allowed
+              title="Spaces are not allowed in the channel handle"
               required
             />
 
@@ -527,7 +529,7 @@ function Header() {
                   <p>{user.fullname}</p>
                   <p>@{user.username}</p>
                   {user.channelCreated ? (
-                    <Link to={`/channel/${user._id}`}>
+                    <Link to={`/channel/${user.channel}`}>
                       <p onClick={toggleUserMenu}>View your channel</p>
                     </Link>
                   ) : (

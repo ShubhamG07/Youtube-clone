@@ -97,30 +97,6 @@ export const videoData = [
     videoLink: "https://www.youtube.com/watch?v=kPa7bsKwL-c",
   },
   {
-    videoId: "kJQP7kiw5Fk",
-    title: "Luis Fonsi - Despacito ft. Daddy Yankee (Official Video)",
-    thumbnailUrl: "https://i.ytimg.com/vi/kJQP7kiw5Fk/hqdefault.jpg",
-    description:
-      "Luis Fonsi's official music video for “Despacito” featuring Daddy Yankee.",
-    subscriber: "32.1M",
-    channelId: "UCJd7A0Jd3M6xK5jwDCHW2zQ",
-    uploader: "Luis Fonsi",
-    views: 8500000000,
-    likes: 20000000,
-    dislikes: 700000,
-    uploadDate: "2017-01-12",
-    category: "Music",
-    comments: [
-      {
-        username: "comment5",
-        userId: "user5",
-        text: "Still an anthem after all these years.",
-        timestamp: "2025-02-13T12:00:00Z",
-      },
-    ],
-    videoLink: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
-  },
-  {
     videoId: "WChG6NV_0lI",
     title: "Adele - Someone Like You",
     thumbnailUrl:
