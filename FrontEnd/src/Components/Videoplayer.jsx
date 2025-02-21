@@ -1,56 +1,57 @@
 import ReactPlayer from "react-player";
-import "../styles.css"
-import { useParams,useNavigate } from "react-router-dom";
+import "../styles.css";
+import { useParams, useNavigate } from "react-router-dom";
 import useFetch from "../Utils/fetchData";
 import Suggested from "./SuggestedList";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import Comment from "./CommentItem";
 
-function VideoPlayer(){
+function VideoPlayer() {
+  const { id } = useParams();
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+  const navigate = useNavigate();
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const [userLiked, setUserLiked] = useState(false);
+  const [userDisliked, setUserDisliked] = useState(false);
 
-    const {id}=useParams();
-    const [comments, setComments] = useState([]);
-    const [newComment, setNewComment] = useState("");
-    const navigate=useNavigate();
-    const { isAuthenticated,user } = useSelector((state) => state.auth);
-    const [userLiked, setUserLiked] = useState(false);
-    const [userDisliked, setUserDisliked] = useState(false);
+  // fetching video from backend api using id attribute from link
 
-    // fetching video from backend api using id attribute from link 
+  const { data, error, loading } = useFetch(
+    `http://localhost:3000/videos/${id}`
+  );
 
-    const { data, error, loading } = useFetch(
-        `http://localhost:3000/videos/${id}`
-      );
+  // fetching comments for a particular video
+  useEffect(() => {
+    fetchComments();
+    fetchUserLikes();
+  }, [id]);
 
-       // fetching comments for a particular video 
-       useEffect(() => {
-        fetchComments();
-        fetchUserLikes();
-      }, [id]);
-
-      // Fetch user liked/disliked videos
+  // Fetch user liked/disliked videos
   const fetchUserLikes = async () => {
     if (!user) return;
 
     try {
-      const response = await axios.get("http://localhost:3000/users/profile", { withCredentials: true });
+      const response = await axios.get("http://localhost:3000/users/profile", {
+        withCredentials: true,
+      });
       setUserLiked(response.data.likedVideos.includes(id));
       setUserDisliked(response.data.dislikedVideos.includes(id));
     } catch (error) {
       console.error("Error fetching user like status:", error);
     }
-  }; 
+  };
 
-   // Handle Like
-   const handleLike = async () => {
+  // Handle Like
+  const handleLike = async () => {
     if (!user) return navigate("/login");
 
     try {
       await axios.post(
         `http://localhost:3000/videos/${user._id}/like/${id}`,
-        {} 
+        {}
       );
 
       setUserLiked(!userLiked);
@@ -62,7 +63,7 @@ function VideoPlayer(){
 
   // Handle Dislike
   const handleDislike = async () => {
-    if (!user) return  navigate("/login");
+    if (!user) return navigate("/login");
 
     try {
       await axios.post(
@@ -77,201 +78,237 @@ function VideoPlayer(){
     }
   };
 
-    
-      // Fetch Comments
-      const fetchComments = async () => {
-        try {
-          const response = await axios.get(`http://localhost:3000/videos/${id}/comments`);
-          setComments(response.data);
-         
-        } catch (error) {
-          console.error("Error fetching comments:", error);
-        }
-      };
+  // Fetch Comments
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/videos/${id}/comments`
+      );
+      setComments(response.data);
+    } catch (error) {
+      console.error("Error fetching comments:", error);
+    }
+  };
 
-      console.log("all comments",comments);
-    
-      // Add Comment
-      const handleAddComment = async () => {
-        if (!user) {
-          navigate("/login");
-          return;
-        }
-    
-        try {
-          const response = await axios.post(
-            `http://localhost:3000/videos/${id}/comment`,
-            { "text": newComment,
-              "user_id": user._id,
-              "user_name":user.username
-             }
-           
-          );
-    
-          setNewComment("");
-          setComments([ response.data, ...comments]); // Add new comment to state
-        } catch (error) {
-          console.error("Error adding comment:", error);
-        }
-      };
-    
-   
+  console.log("all comments", comments);
 
-    //   if there is some error or data still loading 
+  // Add Comment
+  const handleAddComment = async () => {
+    if (!user) {
+      navigate("/login");
+      return;
+    }
 
-      if (error) {
-        return (
-          <div className="error">
-            {" "}
-            <h2>Error Occured.Can't fetch the video !</h2>{" "}
-          </div>
-        );
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/videos/${id}/comment`,
+        { text: newComment, user_id: user._id, user_name: user.username }
+      );
+
+      setNewComment("");
+      setComments([response.data, ...comments]); // Add new comment to state
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
+  };
+
+  //   if there is some error or data still loading
+
+  if (error) {
+    return (
+      <div className="error">
+        {" "}
+        <h2>Error Occured.Can't fetch the video !</h2>{" "}
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="loading">
+        <h1> Please Wait while we are loading the video...</h1>
+      </div>
+    );
+  }
+
+  // timeago function to connvert time data in format s,h,d,m,y format
+  function timeAgo(uploadDate) {
+    const uploadTime = new Date(uploadDate);
+    const now = new Date();
+    const seconds = Math.floor((now - uploadTime) / 1000);
+
+    const intervals = {
+      year: 31536000,
+      month: 2592000,
+      week: 604800,
+      day: 86400,
+      hour: 3600,
+      minute: 60,
+      second: 1,
+    };
+
+    for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+      const count = Math.floor(seconds / secondsInUnit);
+      if (count >= 1) {
+        return `${count} ${unit}${count > 1 ? "s" : ""} ago`;
       }
-    
-      if (loading) {
-        return (
-          <div className="loading">
-            <h1> Please Wait while we are loading the video...</h1>
-          </div>
-        );
-      }
+    }
+    return "Just now";
+  }
 
-     
+  // format views function to format views in count format
 
-   
-
-
-      // timeago function to connvert time data in format s,h,d,m,y format
-      function timeAgo(uploadDate) {
-        const uploadTime = new Date(uploadDate);
-        const now = new Date();
-        const seconds = Math.floor((now - uploadTime) / 1000);
-    
-        const intervals = {
-          year: 31536000,
-          month: 2592000,
-          week: 604800,
-          day: 86400,
-          hour: 3600,
-          minute: 60,
-          second: 1
-        };
-    
-        for (const [unit, secondsInUnit] of Object.entries(intervals)) {
-          const count = Math.floor(seconds / secondsInUnit);
-          if (count >= 1) {
-            return `${count} ${unit}${count > 1 ? "s" : ""} ago`;
-          }
-        }
-        return "Just now";
-      }
-
-      // format views function to format views in count format 
-
-      function formatViews(views) {
-        if (views < 1000) return views.toString();
-        if (views < 1_000_000) return (views / 1_000).toFixed(0) + "K";
-        if (views < 1_000_000_000) return (views / 1_000_000).toFixed(0) + "M";
-        if (views < 1_000_000_000_000) return (views / 1_000_000_000).toFixed(0) + "B";
-        return (views / 1_000_000_000_000).toFixed(1) + "T";
-      }
+  function formatViews(views) {
+    if (views < 1000) return views.toString();
+    if (views < 1_000_000) return (views / 1_000).toFixed(0) + "K";
+    if (views < 1_000_000_000) return (views / 1_000_000).toFixed(0) + "M";
+    if (views < 1_000_000_000_000)
+      return (views / 1_000_000_000).toFixed(0) + "B";
+    return (views / 1_000_000_000_000).toFixed(1) + "T";
+  }
 
   //  data ? console.log("videoplayer loaded",data):"";
 
-  //  our component starts from here 
-    return(
-      <div>
+  //  our component starts from here
+  return (
+    <div>
       <Suggested vid={id} />
-        <div className="videoplayer">
-            <div className="reactplayer">
-            {data? <ReactPlayer
-        url={data.videoLink}
-        controls={true} // Show play, pause, volume, etc.
-        width="100%"
-        height="100%"
-        playing={true} // Set to true to autoplay
-         className="react-player"
-      /> :""}
+      <div className="videoplayer">
+        <div className="reactplayer">
+          {data ? (
+            <ReactPlayer
+              url={data.videoLink}
+              controls={true} // Show play, pause, volume, etc.
+              width="100%"
+              height="100%"
+              playing={true} // Set to true to autoplay
+              className="react-player"
+            />
+          ) : (
+            ""
+          )}
+        </div>
+        {data ? (
+          <div className="videodetails">
+            <h2>{data.title}</h2>
+            <div className="channel-button">
+              <div className="flex">
+                <div className="channellogo br-50">
+                  <img
+                    src={data.thumbnailUrl}
+                    alt="Channel Logo"
+                    className="image"
+                    height="50px"
+                    width="50px"
+                  />
+                </div>
+                <div className="subscriber">
+                  <h3>{data.uploader}</h3>
+                  <p>{data.subscriber} subscribers</p>
+                </div>
+
+                <div className="subscribebutton">
+                  <button>Subscribe</button>
+                </div>
+              </div>
+
+              <div>
+                <button
+                  onClick={handleLike}
+                  className={`likebutton ${userLiked ? "activelike" : ""}`}
+                >
+                  <i className="fa-solid fa-thumbs-up fa-xl"></i> &nbsp;
+                  {formatViews(data.likes)}
+                </button>
+                <button
+                  onClick={handleDislike}
+                  className={`dislikebutton ${
+                    userDisliked ? "activelike" : ""
+                  }`}
+                >
+                  <i className="fa-solid fa-thumbs-down fa-flip-horizontal fa-xl"></i>{" "}
+                </button>
+                <button className="sharebutton">
+                  <i className="fa-solid fa-share fa-xl mlr-10"></i> Share
+                </button>
+                <button className="sharebutton">
+                  <i className="fa-solid fa-download fa-xl mlr-10"></i> Download
+                </button>
+              </div>
             </div>
-{data ? <div className="videodetails">
-    <h2>{data.title}</h2>
-    <div className="channel-button">
-        <div className="flex">
-        
-    <div className="channellogo br-50">
-        <img
-            src={data.thumbnailUrl}
-            alt="Channel Logo"
-            className="image"
-            height="50px"
-            width="50px"
-          />
-        </div>
-       <div className="subscriber">
-        <h3>{data.uploader}</h3>
-        <p>{data.subscriber} subscribers</p>
-        </div> 
 
-        <div className="subscribebutton">
-            <button>Subscribe</button>
-        </div>
-         
-        </div>  
+            <div className="description">
+              <h4>
+                {formatViews(data.views)} views &nbsp;{" "}
+                {timeAgo(data.uploadDate)}
+              </h4>
+              <p>{data.description}</p>
+            </div>
 
-        <div >
-            <button onClick={handleLike} className={`likebutton ${userLiked?"activelike":""}`}><i className="fa-solid fa-thumbs-up fa-xl"></i> &nbsp;{formatViews(data.likes)}</button>
-            <button onClick={handleDislike} className={`dislikebutton ${userDisliked?"activelike":""}`}><i className="fa-solid fa-thumbs-down fa-flip-horizontal fa-xl"></i> </button>
-            <button className="sharebutton"><i className="fa-solid fa-share fa-xl mlr-10"></i> Share</button>
-            <button className="sharebutton"><i className="fa-solid fa-download fa-xl mlr-10"></i> Download</button>
-        </div> 
+            <div className="comment bt-2 mt-10">
+              <h2>{comments.length} comments </h2>
+              <div className="commentsection">
+                <div className="commentnamelogo">
+                  {" "}
+                  {user && user.fullname ? (
+                    user.fullname.charAt(0).toUpperCase()
+                  ) : (
+                    <i className="fa-solid fa-user fa-lg"></i>
+                  )}
+                </div>
+                <div className="add-comment">
+                  <input
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                    placeholder="Add a comment..."
+                  />
+                  {user ? (
+                    <button
+                      className="comment-button"
+                      onClick={handleAddComment}
+                    >
+                      Comment
+                    </button>
+                  ) : (
+                    <div>
+                      {" "}
+                      Sign in to Comment{" "}
+                      <button
+                        className="comment-button"
+                        onClick={() => navigate("/login")}
+                      >
+                        Sign in
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
 
+              <div className="all-comments">
+                {comments
+                  ? comments.map((c) => (
+                      <Comment
+                        key={c._id}
+                        data={c}
+                        vid={id}
+                        cdata={{
+                          comments,
+                          setComments,
+                          newComment,
+                          setNewComment,
+                        }}
+                      />
+                    ))
+                  : ""}
+              </div>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
-
-    <div className="description">
-<h4>{formatViews(data.views)} views &nbsp; {timeAgo(data.uploadDate)}</h4>
-<p>{data.description}</p>
-
-    </div>
-
-    <div className="comment bt-2 mt-10">
-        <h2>{comments.length} comments </h2>
-        <div className="commentsection">
-        <div className="commentnamelogo"> {user && user.fullname?user.fullname.charAt(0).toUpperCase():<i className="fa-solid fa-user fa-lg"></i>}</div>
-        <div className="add-comment">
-          <input
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Add a comment..."
-          />
-          {user?  <button className="comment-button" onClick={handleAddComment}>Comment</button>:<div> Sign in to Comment <button  className="comment-button" onClick={() => navigate("/login")}>Sign in</button></div> }
-      
-        </div>
-
-
-       
-
-        </div>
-      
-
-        <div className="all-comments">
-        {comments
-            ? comments.map((c) => (
-                <Comment key={c._id} data={c} vid={id} cdata={{comments, setComments,newComment,setNewComment}} />
-              ))
-            : ""}
-             </div>
-    </div>
-
-    </div>
-    :""
-}
-           
-
-            
-          
-        </div>
-        </div>
-    )
+  );
 }
 
 export default VideoPlayer;

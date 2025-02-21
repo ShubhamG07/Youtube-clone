@@ -1,32 +1,32 @@
-body{
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto","Noto",sans-serif ;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "Noto", sans-serif;
 }
 
-body a{
+body a {
   text-decoration: none;
 }
 
 /* header styles  */
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    width: 100vw;
-    top:0;
-    background-color: white;
-    z-index: 500;
-    padding-top: 5px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  background-color: white;
+  z-index: 500;
+  padding-top: 5px;
 }
 
-.header h3{
+.header h3 {
   font-weight: 500;
   font-size: 18px;
 }
 
-.namelogo{
+.namelogo {
   width: 40px;
   height: 40px;
   display: flex;
@@ -40,7 +40,7 @@ body a{
 
 }
 
-.create-channel{
+.create-channel {
   margin-right: 50px;
   margin-top: 5px;
   color: blue;
@@ -60,16 +60,16 @@ body a{
   border-radius: 10px;
   height: 100vh;
   overflow-y: auto;
-  background-color:white;
+  background-color: white;
   box-shadow: 1px 1px 2px 1px rgb(206, 205, 205);
- 
+
 }
 
 
 
 .usermodal-content {
   position: relative;
-  top:30px;
+  top: 30px;
   border-top: 0.5px solid rgb(180, 176, 176);
   background-color: white;
   width: 300px;
@@ -78,20 +78,20 @@ body a{
 }
 
 .usermodal::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 
 .usermodal:hover::-webkit-scrollbar {
   display: block;
-  width: 4px; 
+  width: 4px;
 }
 
 .usermodal::-webkit-scrollbar-thumb {
-  background: #8d8b8b; 
+  background: #8d8b8b;
 }
 
-.namelogomodal{
+.namelogomodal {
   width: 50px;
   height: 50px;
   display: flex;
@@ -104,16 +104,16 @@ body a{
 
 }
 
-.email-name{
+.email-name {
   display: flex;
   padding: 10px;
 }
 
-.email-name p{
+.email-name p {
   margin: 5px;
 }
 
-.user-menu-items p{
+.user-menu-items p {
 
   font-size: 16px;
   font-weight: 400;
@@ -125,7 +125,7 @@ body a{
 }
 
 
- 
+
 .user-menu-items p:hover {
   background-color: #e6e7e9;
   border-radius: 5px;
@@ -135,199 +135,199 @@ body a{
 
 /* styles for hamburger menu and modal  */
 
-.menu{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-  }
-  
-  /* Hamburger Icon Styles */
-  .hamburger {
-    position: relative;
-    top: 20px;
-    left: 20px;
-    width: 20px;
-    height: 17px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    cursor: pointer;
-    /* z-index: 998; */
-  }
-  
-  .line {
-    width: 100%;
-    height: 2px;
-    background-color: rgb(70, 67, 67);
-  }
-  
-  /* Modal Styles */
-  .modal {
-    display: flex;
-    position: fixed;
-    top: 50px;
-    left: 0px;
-    width: 240px;
-    height: 90vh;
-    overflow-y: auto;
-    background-color: white;
-   
-  }
-
-  .modal::-webkit-scrollbar {
-    display: none; 
-  }
-
-  
-  .modal:hover::-webkit-scrollbar {
-    display: block;
-    width: 8px; 
-  }
-  
-  .modal:hover::-webkit-scrollbar-thumb {
-    background: #8d8b8b; 
-  }
-  
-  
-
-  
-  .modal-content {
-    position: relative;
-    background-color: white;
-    width: 216px;
-    height: 100%;
-    padding: 10px;
-
-  }
-
- 
-
-  /* Menu Items */
-  
-  
-  .menu-items p{
-    
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    padding: 2px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .menu-items p a {
-    text-decoration: none;
-    color: black;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-  }
-  
-  .menu-items p:hover {
-    background-color: #e6e7e9;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  /* search input  */
-
-  .searchinput{
-    width: 40vw;
-    padding: 8px 10px 10px 20px;
-    font-size: 16px;
-    border-top-left-radius:20px;
-    border-bottom-left-radius: 20px;
-    border: 1px solid grey;
-    margin-top: 2px;
-  }
-
-  .searchbutton{
-    height: 40px;
-    width: 70px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border: 1px solid grey;
-    border-left: 0px;
-    padding: 5px;
-  }
-
-  /* sidebar styling  */
-
-  .sidebar{
-    position: fixed;
-    width: 75px;
-    height: 625px;
-    left: 0px;
-    top: 80px;
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-  }
-
-  .sidebar p{
-    font-size: 10px;
-    margin-bottom: 25px;
-  }
-
-  .sidebaritem{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 70px;
-    width: 70px;
-  }
-
-  .sidebaritem:hover{
-    background-color: #b9bbbe;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .sidebaritem a{
-    text-decoration: none;
-  }
-
-  /* videolist styling  */
-
-  .videolist{
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    left:70px;
-    top: 90px;
-    width: 86vw;
-    padding: 50px;
-
-  }
-
-  .loading{
-    height: 100vh;
-    position: relative;
-    left: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    color: blue;
-    text-align: center;
+.menu {
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
-.error{
+/* Hamburger Icon Styles */
+.hamburger {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  width: 20px;
+  height: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  /* z-index: 998; */
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background-color: rgb(70, 67, 67);
+}
+
+/* Modal Styles */
+.modal {
+  display: flex;
+  position: fixed;
+  top: 50px;
+  left: 0px;
+  width: 240px;
+  height: 90vh;
+  overflow-y: auto;
+  background-color: white;
+
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+
+.modal:hover::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+}
+
+.modal:hover::-webkit-scrollbar-thumb {
+  background: #8d8b8b;
+}
+
+
+
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  width: 216px;
+  height: 100%;
+  padding: 10px;
+
+}
+
+
+
+/* Menu Items */
+
+
+.menu-items p {
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.menu-items p a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.menu-items p:hover {
+  background-color: #e6e7e9;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* search input  */
+
+.searchinput {
+  width: 40vw;
+  padding: 8px 10px 10px 20px;
+  font-size: 16px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: 1px solid grey;
+  margin-top: 2px;
+}
+
+.searchbutton {
+  height: 40px;
+  width: 70px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: 1px solid grey;
+  border-left: 0px;
+  padding: 5px;
+}
+
+/* sidebar styling  */
+
+.sidebar {
+  position: fixed;
+  width: 75px;
+  height: 625px;
+  left: 0px;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.sidebar p {
+  font-size: 10px;
+  margin-bottom: 25px;
+}
+
+.sidebaritem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 70px;
+}
+
+.sidebaritem:hover {
+  background-color: #b9bbbe;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sidebaritem a {
+  text-decoration: none;
+}
+
+/* videolist styling  */
+
+.videolist {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  left: 70px;
+  top: 90px;
+  width: 86vw;
+  padding: 50px;
+
+}
+
+.loading {
   height: 100vh;
   position: relative;
   left: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    color: red;
-    background-color: black;
-    text-align: center;
-    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: blue;
+  text-align: center;
 }
 
-.novideofound{
+.error {
+  height: 100vh;
+  position: relative;
+  left: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: red;
+  background-color: black;
+  text-align: center;
+
+}
+
+.novideofound {
   width: 100%;
   height: 70vh;
   display: flex;
@@ -337,7 +337,7 @@ body a{
 
 }
 
-.filterbutton{
+.filterbutton {
   width: 100%;
   height: 50px;
   margin-bottom: 50px;
@@ -347,20 +347,20 @@ body a{
   padding-top: 5px;
 }
 
-.filterbutton button{
+.filterbutton button {
   margin: 5px;
   font-weight: 500;
   border-radius: 5px;
   border: none;
   font-size: 15px;
   padding: 8px;
-  font-family: "Roboto","Noto",sans-serif ;
+  font-family: "Roboto", "Noto", sans-serif;
   background-color: #e6e7e9;
 }
 
 /* video item styling  */
 
-.videoitem{
+.videoitem {
   display: flex;
   flex-direction: column;
   width: 31%;
@@ -370,19 +370,19 @@ body a{
 }
 
 
-.imagecontainer img{
-  height:225px ;
-  width:100%;
+.imagecontainer img {
+  height: 225px;
+  width: 100%;
   border-radius: 10px;
   object-fit: cover;
 }
 
-.videoitemdetails{
+.videoitemdetails {
   display: flex;
   margin-top: 5px;
 }
 
-.videoitemdetails img{
+.videoitemdetails img {
   border-radius: 50%;
   margin: 8px;
   object-fit: cover;
@@ -395,32 +395,32 @@ body a{
   max-height: 50px;
   text-overflow: ellipsis;
   font-weight: 500;
-    font-family: "Roboto","Noto",sans-serif ;
+  font-family: "Roboto", "Noto", sans-serif;
 }
 
-.channellogo{
+.channellogo {
   margin-right: 10px;
 }
 
 /* videoplayer styling  */
 
-.videoplayer{
+.videoplayer {
   position: relative;
   top: 70px;
   left: 40px;
   width: 63%;
 }
 
-.reactplayer{
-  width:100%;
+.reactplayer {
+  width: 100%;
   max-width: 900px;
-  aspect-ratio: 16/9; 
-  overflow: hidden; 
-  border-radius: 15px; 
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 15px;
   background: black;
 }
 
-.reactplayer >div{
+.reactplayer>div {
   overflow: hidden;
 }
 
@@ -428,23 +428,23 @@ body a{
   margin-bottom: 10px;
 } */
 
-.channel-button{
+.channel-button {
   display: flex;
   justify-content: space-between;
 }
 
-.subscriber>h3{
+.subscriber>h3 {
   margin: 5px;
 }
 
 
-.subscriber p{
+.subscriber p {
   margin: 5px;
   font-size: 14px;
   color: rgb(68, 68, 68);
 }
 
-.subscribebutton>button{
+.subscribebutton>button {
   width: 100px;
   background-color: black;
   color: white;
@@ -456,7 +456,7 @@ body a{
   margin-top: 10px;
 }
 
-.likebutton{
+.likebutton {
   padding: 5px 15px 5px 15px;
   font-size: 16px;
   border: none;
@@ -466,27 +466,27 @@ body a{
   background-color: #e6e7e9;
 }
 
-.likebutton:hover{
+.likebutton:hover {
   background-color: #b6b1b1;
 }
 
-.dislikebutton{
-    padding: 5px 15px 5px 15px;
-    font-size: 16px;
-    border: none;
-    border-left: 1px solid grey;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    height: 40px;
-    background-color: #e6e7e9;
+.dislikebutton {
+  padding: 5px 15px 5px 15px;
+  font-size: 16px;
+  border: none;
+  border-left: 1px solid grey;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  height: 40px;
+  background-color: #e6e7e9;
 }
 
 
-.dislikebutton:hover{
+.dislikebutton:hover {
   background-color: #b6b1b1;
 }
 
-.sharebutton{
+.sharebutton {
   padding: 5px 15px 5px 15px;
   font-size: 16px;
   border: none;
@@ -496,28 +496,29 @@ body a{
   margin: 10px;
 }
 
-.sharebutton:hover{
+.sharebutton:hover {
   background-color: #b6b1b1;
 }
 
-.description{
+.description {
   background-color: #e2e1e1;
   border-radius: 10px;
   padding: 5px 20px;
   margin: 10px 0px;
 }
 
-.description>h4{
+.description>h4 {
   margin: 5px;
   margin-top: 10px;
 }
-.description>p{
+
+.description>p {
   margin: 10px;
 }
 
 /* suggested video styling  */
 
-.suggested{
+.suggested {
   width: 28%;
   position: absolute;
   top: 70px;
@@ -528,34 +529,34 @@ body a{
 
 /* suggested item styling  */
 
-.suggesteditem{
+.suggesteditem {
   width: 100%;
   display: flex;
   margin: 10px;
 }
 
-.suggesteditem p{
+.suggesteditem p {
   font-size: 12px;
   margin: 2px;
 }
 
-.suggesteditem h3{
+.suggesteditem h3 {
   font-size: 15px;
   color: black;
   font-weight: 500;
   margin: 5px 0px;
   max-height: 35px;
-overflow: hidden;
+  overflow: hidden;
 }
 
-.suggestedimage img{
+.suggestedimage img {
   width: 170px;
   height: 100px;
   border-radius: 10px;
   object-fit: cover;
 }
 
-.suggesteditemdetails{
+.suggesteditemdetails {
   /* width: 60%; */
   margin-left: 5px;
 }
@@ -563,7 +564,7 @@ overflow: hidden;
 
 /* signup and login page styling  */
 
-.signup{
+.signup {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -571,7 +572,7 @@ overflow: hidden;
   align-items: center;
 }
 
-.formcontainer{
+.formcontainer {
   width: 50%;
   height: 70%;
   margin-top: 50px;
@@ -584,7 +585,7 @@ overflow: hidden;
 }
 
 
-.formcontainer input{
+.formcontainer input {
   width: 90%;
   padding: 10px;
   margin: 10px;
@@ -594,7 +595,7 @@ overflow: hidden;
   border: 1px solid grey;
 }
 
-.signupbutton{
+.signupbutton {
   width: 50%;
   margin-left: 25%;
   margin-top: 15px;
@@ -607,20 +608,20 @@ overflow: hidden;
   color: white;
 }
 
-.signupbutton:hover{
+.signupbutton:hover {
   background-color: green;
 }
 
 /* profile page styling  */
 
-.profile-container{
+.profile-container {
   display: flex;
   justify-content: center;
   position: relative;
   top: 50px;
 }
 
-.profileformcontainer{
+.profileformcontainer {
   width: 50%;
   height: 70%;
   margin-top: 50px;
@@ -635,7 +636,7 @@ overflow: hidden;
   align-items: center;
 }
 
-.profileformcontainer input{
+.profileformcontainer input {
   width: 90%;
   padding: 10px;
   margin: 10px;
@@ -644,7 +645,7 @@ overflow: hidden;
   border: 1px solid grey;
 }
 
-.name-username-data{
+.name-username-data {
   display: flex;
   font-size: 30px;
   position: relative;
@@ -652,11 +653,11 @@ overflow: hidden;
   top: 20px;
 }
 
-.name-username-data p{
+.name-username-data p {
   margin: 5px 0px;
 }
 
-.biglogoname{
+.biglogoname {
   height: 100px;
   width: 100px;
   text-align: center;
@@ -667,18 +668,18 @@ overflow: hidden;
   position: relative;
 }
 
-.profileusername{
+.profileusername {
   font-size: 15px;
   color: rgb(99, 98, 98);
 }
 
 /* comment section  */
 
-.commentsection{
+.commentsection {
   display: flex;
 }
 
-.commentsection input{
+.commentsection input {
   width: 52vw;
   border: none;
   border-bottom: 0.5px solid grey;
@@ -692,7 +693,7 @@ overflow: hidden;
   border-bottom: 2px solid rgb(18, 18, 19);
 }
 
-.commentnamelogo{
+.commentnamelogo {
   width: 40px;
   height: 40px;
   display: flex;
@@ -704,25 +705,25 @@ overflow: hidden;
   color: white;
 }
 
-.comment-button{
-margin-top: 10px;
-font-size: 16px;
-padding: 10px;
-border-radius: 20px;
-border: none;
-font-weight: 500;
-width: 100px;
+.comment-button {
+  margin-top: 10px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 500;
+  width: 100px;
 }
 
 
-.comment-button:hover{
+.comment-button:hover {
   background-color: rgb(97, 54, 253);
   color: white;
 }
 
 
 
-.commentdata{
+.commentdata {
   width: 62vw;
   display: flex;
   padding: 10px;
@@ -730,20 +731,20 @@ width: 100px;
   position: relative;
 }
 
-.add-comment{
+.add-comment {
   margin-left: 20px;
 }
 
-.add-comment span{
+.add-comment span {
   font-size: 14px;
   font-weight: 500;
 }
 
-.add-comment p{
+.add-comment p {
   margin: 10px;
 }
 
-.commentinput input{
+.commentinput input {
   border: none;
   outline: none;
   font-size: 16px;
@@ -753,17 +754,17 @@ width: 100px;
   background: none;
 }
 
-.commentinput input:focus{
+.commentinput input:focus {
   border-bottom: 2px solid rgb(18, 18, 19);
 }
 
-.edit-delete{
+.edit-delete {
   position: absolute;
   right: 35px;
   top: 5px;
 }
 
-.small-modal{
+.small-modal {
   height: 70px;
   width: 100px;
   position: absolute;
@@ -775,18 +776,18 @@ width: 100px;
   padding: 10px;
 }
 
-.small-modal p{
+.small-modal p {
   margin: 15px 0px;
   cursor: pointer;
 }
 
-.edit-actions{
+.edit-actions {
   position: absolute;
-  right:20px;
-  top:60px;
+  right: 20px;
+  top: 60px;
 }
 
-.commenteditbutton{
+.commenteditbutton {
   font-size: 16px;
   padding: 5px;
   border-radius: 20px;
@@ -795,13 +796,13 @@ width: 100px;
   width: 100px;
 }
 
-.commenteditbutton:hover{
+.commenteditbutton:hover {
   background-color: #b9bbbe;
 }
 
 /* channel modal  styling  */
 
-.channel-Modal{
+.channel-Modal {
   width: 70vw;
   height: 85vh;
   background-color: white;
@@ -817,7 +818,7 @@ width: 100px;
   justify-content: center;
 }
 
-.channel-Modal input{
+.channel-Modal input {
   width: 80%;
   padding: 10px;
   font-size: 16px;
@@ -827,7 +828,7 @@ width: 100px;
 }
 
 
-.createchannelbutton{
+.createchannelbutton {
   width: 40%;
   padding: 10px;
   font-size: 16px;
@@ -840,11 +841,11 @@ width: 100px;
   margin-right: 25px;
 }
 
-.createchannelbutton:hover{
+.createchannelbutton:hover {
   background-color: green;
 }
 
-.cancelbutton{
+.cancelbutton {
   width: 40%;
   padding: 10px;
   font-size: 16px;
@@ -857,11 +858,11 @@ width: 100px;
 
 }
 
-.cancelbutton:hover{
+.cancelbutton:hover {
   background-color: black;
 }
 
-.channeluserlogo{
+.channeluserlogo {
   width: 100px;
   height: 100px;
   background-color: green;
@@ -869,26 +870,26 @@ width: 100px;
   border-radius: 50%;
   color: white;
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-items: center;
   font-size: 40px;
   padding: 20px;
   text-align: center;
 }
 
-.channeluserlogo p{
+.channeluserlogo p {
   margin-left: 15px;
 }
 
 /* channel page styling  */
 
-.channel{
+.channel {
   position: relative;
   left: 100px;
   width: 90vw;
 }
 
-.channel-upper{
+.channel-upper {
   position: relative;
   top: 100px;
   height: 30vh;
@@ -896,7 +897,7 @@ width: 100px;
   display: flex;
 }
 
-.channelpagelogo{
+.channelpagelogo {
   height: 170px;
   width: 170px;
   font-size: 130px;
@@ -907,45 +908,78 @@ width: 100px;
   margin: 20px;
 }
 
-.channelname{
+.channelname {
   font-size: 50px;
   margin: 0px;
 }
 
-.channelusername{
-font-size: 20px;
-margin: 5px;
+.channelusername {
+  font-size: 20px;
+  margin: 5px;
 }
 
-.channel-lower{
+.channel-lower {
   position: relative;
   top: 90px;
   /* border: 2px solid black; */
 }
 
-.bb2channel{
+.bb2channel {
   border-bottom: 2px solid black;
   font-size: 25px;
   padding: 10px;
 }
 
-.videolistchannel{
+.videolistchannel {
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  left:0px;
+  left: 0px;
   top: 20px;
   width: 80vw;
 }
 
 /* channel item styling  */
 
-.edit-delete-channelvideo p{
-  text-align: end;
-  padding: 0px 10px;
+.channelvideo-container{
+  position: relative;
 }
 
-.editchannelvideo{
+.edit-delete-channelvideo{
+  margin-left: 20px;
+}
+
+.edit-delete-channelvideo p {
+  text-align: end;
+  /* padding: 0px 10px; */
+}
+
+.small-channelmodule{
+  position: absolute;
+  z-index: 10;
+  bottom: 80px;
+  right: 25px;
+  background-color: white;
+  /* padding: 5px 10px; */
+  width: 120px;
+  height: 100px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px 2px grey;
+}
+
+.small-channelmodule p{
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.small-channelmodule p:hover{
+  background-color: black;
+  color: white;
+}
+
+
+.editchannelvideo {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -953,205 +987,206 @@ margin: 5px;
   background-color: blue;
   color: white;
   border-radius: 10px;
-  width: 80vw;
-  height: 90vh;
+  width: 90%;
+  height: 90%;
   z-index: 100;
 }
 
-.editchannelvideo label{
+.editchannelvideo label {
   font-size: 20px;
   font-weight: 500;
 }
 
-.editchannelvideo input{
+.editchannelvideo input {
   width: 90%;
   border-radius: 10px;
   padding: 10px;
   font-size: 20px;
 }
 
-.editchannelvideo textarea{
-  width: 90%;  
-  height: 200px; 
+.editchannelvideo textarea {
+  width: 90%;
+  height: 200px;
   overflow: auto;
-  padding: 10px; 
-  font-size: 16px; 
-  font-family: "Roboto","Noto",sans-serif ;
-  border-radius: 10px; 
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Roboto", "Noto", sans-serif;
+  border-radius: 10px;
   border: 1px solid #ccc;
-  resize: none; 
+  resize: none;
 }
 
-.editchannelvideo button{
-  width: 30%;
-  margin-left: 35%;
+.editchannelvideo button {
+  width: 50%;
+  margin-left: 25%;
   margin-top: 20px;
   font-size: 20px;
   border-radius: 20px;
   padding: 10px;
 }
 
-.save-editvideo{
+.save-editvideo {
   background-color: green;
   color: white;
   border: 1px solid black;
 }
 
-.save-editvideo:hover{
+.save-editvideo:hover {
   background-color: red;
 }
 
-.cancel-editvideo{
+.cancel-editvideo {
   background-color: rgb(212, 205, 205);
   border: 1px solid white;
 }
 
-.cancel-editvideo:hover{
+.cancel-editvideo:hover {
   background-color: black;
   color: white
 }
+
 /* some common classes  */
 
 
-  .hide{
-    display: none;
-  }
+.hide {
+  display: none;
+}
 
-  .mlr-10{
-    margin-left: 10px;
-    margin-right: 10px;
-  }
+.mlr-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
-  .ml-5{
-    margin-left: 5px;
-  }
+.ml-5 {
+  margin-left: 5px;
+}
 
-  
 
-  .bb-2{
-    padding: 10px;
-    border-bottom: 0.5px solid rgb(211, 203, 203);
-  }
 
-  .bt-2{
-    padding: 10px;
-    border-top: 0.5px solid rgb(211, 203, 203);
-  }
+.bb-2 {
+  padding: 10px;
+  border-bottom: 0.5px solid rgb(211, 203, 203);
+}
 
-  .mt-10{
-    margin-top: 20px;
-  }
+.bt-2 {
+  padding: 10px;
+  border-top: 0.5px solid rgb(211, 203, 203);
+}
 
-  .mr-10{
-    margin-right: 10px;
-  }
+.mt-10 {
+  margin-top: 20px;
+}
 
-  .svg-2{
-    margin-top: 5px;
-  }
+.mr-10 {
+  margin-right: 10px;
+}
 
-  .ml-80{
-    margin-top: 10px;
-    margin-left: 80px;
-  }
+.svg-2 {
+  margin-top: 5px;
+}
 
-  .ml-20{
-    margin-left: 20px;
-  }
+.ml-80 {
+  margin-top: 10px;
+  margin-left: 80px;
+}
 
-  .activelike{
-    color: blue;
-  }
+.ml-20 {
+  margin-left: 20px;
+}
 
-  .signin{
-    border: 1px solid rgb(197, 197, 204);
-    width: 100px;
-    border-radius: 20px;
-    padding: 7px 2px;
-    font-size: 15px;
-    font-family: "Roboto","Noto",sans-serif ;
-    color: rgb(75, 98, 228);
-    font-weight: 600;
-    margin-top: 5px;
-    margin-right: 25px;
-    margin-bottom: 10px;
-  }
+.activelike {
+  color: blue;
+}
 
-  .signin:hover{
-    background-color: #e6e7e9;
-    cursor: pointer;
-  }
+.signin {
+  border: 1px solid rgb(197, 197, 204);
+  width: 100px;
+  border-radius: 20px;
+  padding: 7px 2px;
+  font-size: 15px;
+  font-family: "Roboto", "Noto", sans-serif;
+  color: rgb(75, 98, 228);
+  font-weight: 600;
+  margin-top: 5px;
+  margin-right: 25px;
+  margin-bottom: 10px;
+}
 
-  .signinheading{
-    font-family: "Roboto","Noto",sans-serif ;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    padding: 2px;
-  }
+.signin:hover {
+  background-color: #e6e7e9;
+  cursor: pointer;
+}
 
-  .sm-grey{
-    font-size: 14px;
-    word-spacing: 4px;
-    color: grey;
-    font-weight: 600;
-  }
+.signinheading {
+  font-family: "Roboto", "Noto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 2px;
+}
 
- 
+.sm-grey {
+  font-size: 14px;
+  word-spacing: 4px;
+  color: grey;
+  font-weight: 600;
+}
 
-  .p-10{
-    padding: 10px;
-  }
 
-  .red{
-    color:red;
-  }
 
-  .grey{
-    color: grey;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 5px;
-  }
+.p-10 {
+  padding: 10px;
+}
 
-  .suggestedgrey{
-    color: grey;
-    font-weight: 500;
-  }
+.red {
+  color: red;
+}
 
-  .shift-right{
-    left:250px;
-    width:80vw; 
-    padding: 10px;
-   }
+.grey {
+  color: grey;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 5px;
+}
 
-   button.active{
-    background-color: black;
-    color: white;
-   }
+.suggestedgrey {
+  color: grey;
+  font-weight: 500;
+}
 
-   .br-50 img{
-    border-radius: 50%;
-   }
+.shift-right {
+  left: 250px;
+  width: 80vw;
+  padding: 10px;
+}
 
-   .flex{
-    display: flex;
-   }
+button.active {
+  background-color: black;
+  color: white;
+}
 
-   .br50{
-    border-radius: 50%;
+.br-50 img {
+  border-radius: 50%;
+}
 
-   }
+.flex {
+  display: flex;
+}
 
-   .mlr-15{
-    margin-left: 10px;
-    margin-right: 15px;
-   }
+.br50 {
+  border-radius: 50%;
 
-   .pointer{
-    cursor: pointer;
-   }
+}
 
-   .bbuser{
-    border-bottom: 0.5px solid rgb(180, 176, 176);
-   }
+.mlr-15 {
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.bbuser {
+  border-bottom: 0.5px solid rgb(180, 176, 176);
+}

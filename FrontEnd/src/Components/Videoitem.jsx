@@ -2,13 +2,12 @@ import { useState, useEffect, lazy } from "react";
 import "../styles.css";
 import { Link } from "react-router-dom";
 
-
 function VideoItem(props) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const data = props.data;
 
-  // function to preload image 
+  // function to preload image
 
   const preloadImage = (url) => {
     const img = new Image();
@@ -35,7 +34,7 @@ function VideoItem(props) {
       day: 86400,
       hour: 3600,
       minute: 60,
-      second: 1
+      second: 1,
     };
 
     for (const [unit, secondsInUnit] of Object.entries(intervals)) {
@@ -51,11 +50,10 @@ function VideoItem(props) {
     if (views < 1000) return views.toString();
     if (views < 1_000_000) return (views / 1_000).toFixed(1) + "K";
     if (views < 1_000_000_000) return (views / 1_000_000).toFixed(1) + "M";
-    if (views < 1_000_000_000_000) return (views / 1_000_000_000).toFixed(1) + "B";
+    if (views < 1_000_000_000_000)
+      return (views / 1_000_000_000).toFixed(1) + "B";
     return (views / 1_000_000_000_000).toFixed(1) + "T";
   }
-  
-
 
   return (
     <div className="videoitem">
@@ -72,7 +70,7 @@ function VideoItem(props) {
 
       <div className="videoitemdetails">
         <div className="channellogo">
-        <img
+          <img
             src={data.thumbnailUrl}
             onLoad={handleImageLoad}
             alt="Channel logo"
@@ -81,19 +79,18 @@ function VideoItem(props) {
             width="40px"
           />
         </div>
-     <div className="videodetailsdata">
-     <Link to={`/video/${data._id}`}>
-          
-          <span>{data.title}</span>
-        </Link>
+        <div className="videodetailsdata">
+          <Link to={`/video/${data._id}`}>
+            <span>{data.title}</span>
+          </Link>
 
-        <div className="grey">
+          <div className="grey">
             <p>{data.uploader}</p>
-            <p>{formatViews(data.views)} views • {timeAgo(data.uploadDate)}</p>
+            <p>
+              {formatViews(data.views)} views • {timeAgo(data.uploadDate)}
+            </p>
+          </div>
         </div>
-     </div>
-        
-       
       </div>
     </div>
   );

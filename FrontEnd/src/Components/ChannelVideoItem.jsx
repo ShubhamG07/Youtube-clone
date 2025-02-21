@@ -125,34 +125,15 @@ function ChannelVideoItem(props) {
           <button
             className="cancel-editvideo"
             onClick={() => {
-                setEditMenu(false);
-                setEditMode(false);}}
+              setEditMenu(false);
+              setEditMode(false);
+            }}
           >
             Cancel
           </button>
         </div>
       ) : (
-        <div>
-          <div className="edit-delete-channelvideo">
-            <p>
-              <i
-                onClick={toggleEditMenu}
-                className="fa-solid fa-ellipsis-vertical fa-xl pointer"
-              ></i>
-            </p>
-            {editMenu ? (
-              <div>
-                <p onClick={handleEdit} className="pointer">
-                  <i className="fa-solid fa-pencil fa-lg mr-10"></i>Edit
-                </p>
-                <p onClick={() => handleDelete()} className="pointer">
-                  <i className="fa-solid fa-trash fa-lg mr-10"></i>Delete
-                </p>
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
+        <div onClick={()=>editMenu?setEditMenu(false):""} className="channelvideo-container">
           <div className="imagecontainer">
             <Link to={`/video/${data._id}`}>
               <img
@@ -177,7 +158,7 @@ function ChannelVideoItem(props) {
             </div>
             <div className="videodetailsdata">
               <Link to={`/video/${data._id}`}>
-                <span>{data.title}</span>
+                <span>{title}</span>
               </Link>
 
               <div className="grey">
@@ -187,6 +168,26 @@ function ChannelVideoItem(props) {
                 </p>
               </div>
             </div>
+            <div className="edit-delete-channelvideo">
+            <p>
+              <i
+                onClick={toggleEditMenu}
+                className="fa-solid fa-ellipsis-vertical fa-xl pointer"
+              ></i>
+            </p>
+            {editMenu ? (
+              <div className="small-channelmodule">
+                <p onClick={handleEdit} className="pointer">
+                  <i className="fa-solid fa-pencil fa-lg mr-10"></i>Edit
+                </p>
+                <p onClick={() => handleDelete()} className="pointer">
+                  <i className="fa-solid fa-trash fa-lg mr-10"></i>Delete
+                </p>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
           </div>
         </div>
       )}
