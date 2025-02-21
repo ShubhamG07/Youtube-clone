@@ -1,8 +1,11 @@
 import { useState, useEffect, lazy } from "react";
 import "../styles.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function VideoItem(props) {
+
+  const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const data = props.data;
@@ -56,7 +59,7 @@ function VideoItem(props) {
   }
 
   return (
-    <div className="videoitem">
+    <div className={`videoitem ${isMenuOpen ? "shiftvideoitem800" : ""}`}>
       <div className="imagecontainer">
         <Link to={`/video/${data._id}`}>
           <img

@@ -87,7 +87,7 @@ function Videolist() {
           ""
         )}
 
-        <div className="filterbutton">
+        <div className={`filterbutton ${isMenuOpen ? "shift-right800" : ""}`}>
           <button
             className={activeButton === 1 ? "active" : ""}
             onClick={() => handleFilter(1, "all")}
@@ -150,9 +150,11 @@ function Videolist() {
           </button>
         </div>
 
-        {filteredVideos
+        
+{filteredVideos
           ? filteredVideos.map((v) => <VideoItem key={v._id} data={v} />)
           : ""}
+
       </div>
     </div>
   );

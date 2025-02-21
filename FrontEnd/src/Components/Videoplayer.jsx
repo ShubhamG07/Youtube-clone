@@ -92,6 +92,13 @@ function VideoPlayer() {
 
   console.log("all comments", comments);
 
+   // add comment when Enter key is pressed
+   const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleAddComment();
+    }
+  };
+
   // Add Comment
   const handleAddComment = async () => {
     if (!user) {
@@ -260,6 +267,7 @@ function VideoPlayer() {
                   <input
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
+                    onKeyDown={handleKeyDown}
                     placeholder="Add a comment..."
                   />
                   {user ? (
