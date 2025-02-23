@@ -14,6 +14,7 @@ function ChannelVideoItem(props) {
   const [description, setDescription] = useState(data.description);
   const [editMenu, setEditMenu] = useState(false);
   const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const isMenuOpen = useSelector((state) => state.menu.isMenuOpen);
 
   const dispatch = useDispatch();
 
@@ -107,7 +108,7 @@ function ChannelVideoItem(props) {
   }
 
   return (
-    <div className="videoitem">
+    <div className={`videoitem ${isMenuOpen ? "shiftvideochannelitem800" : ""}`}>
       {editMode ? (
         <div className="editchannelvideo">
           <label>Title</label>

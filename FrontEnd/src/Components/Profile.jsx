@@ -56,7 +56,11 @@ const UserProfile = () => {
       );
       dispatch(updateProfile(res.data)); // Update Redux state
       setMessage("Profile updated successfully!");
-      window.location.reload();
+      setTimeout(()=>{
+        setMessage("");
+        window.location.reload();
+      },2000);
+      
     } catch (error) {
       console.error("Error updating profile:", error);
       setMessage("Failed to update profile.");

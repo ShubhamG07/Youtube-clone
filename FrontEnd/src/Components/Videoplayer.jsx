@@ -179,22 +179,23 @@ function VideoPlayer() {
   //  our component starts from here
   return (
     <div>
-      <Suggested vid={id} />
+     
       <div className="videoplayer">
-        <div className="reactplayer">
+       
           {data ? (
+             <div className="reactplayer" >
             <ReactPlayer
               url={data.videoLink}
-              controls={true} // Show play, pause, volume, etc.
+              controls={true}  // Show play, pause, volume, etc.
               width="100%"
               height="100%"
               playing={true} // Set to true to autoplay
               className="react-player"
-            />
+            /> </div>
           ) : (
             ""
           )}
-        </div>
+       
         {data ? (
           <div className="videodetails">
             <h2>{data.title}</h2>
@@ -315,6 +316,7 @@ function VideoPlayer() {
           ""
         )}
       </div>
+      <Suggested vid={id} />
     </div>
   );
 }

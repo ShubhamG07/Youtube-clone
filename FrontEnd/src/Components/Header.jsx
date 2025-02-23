@@ -18,6 +18,7 @@ function Header() {
   const [channelMenu, setChannelMenu] = useState(false);
   const [channelName, setChannelName] = useState("");
   const [channelHandle, setChannelHandle] = useState("");
+  const [message, setMessage] = useState("");
 
   console.log("isauth", isAuthenticated, user);
 
@@ -75,8 +76,12 @@ function Header() {
         { withCredentials: true }
       );
       dispatch(updateProfile(res.data));
-      setChannelMenu(false);
-      window.location.reload();
+      setMessage("Channel Created successfully!");
+      setTimeout(()=>{
+        setMessage("");
+        window.location.reload();
+        setChannelMenu(false);
+      },2000);
     } catch (error) {
       alert(error.response?.data?.error || "Error creating channel");
     }
@@ -441,7 +446,11 @@ function Header() {
         </Link>
       </div>
 
-      <div>
+
+{/* header search bar  */}
+
+{/* display on bigger screen  */}
+      <div className="hideon400px">
         <input
           className="searchinput"
           onChange={(e) => seSearchedText(e.target.value)}
@@ -454,6 +463,7 @@ function Header() {
         </button>
       </div>
 
+
       {/* usermenu and create channel  */}
 
       {isAuthenticated ? (
@@ -461,7 +471,7 @@ function Header() {
           ""
         ) : (
           <div onClick={toggleChannelMenu} className="create-channel pointer">
-            <i className="fa-solid fa-plus fa-lg"></i> Create Channel
+            <i className="fa-solid fa-plus fa-lg"></i> <span className="hideon400px">Create Channel </span>
           </div>
         )
       ) : (
@@ -493,7 +503,6 @@ function Header() {
               title="Spaces are not allowed in the channel handle"
               required
             />
-
             <button type="submit" className="createchannelbutton">
               Create Channel
             </button>
@@ -501,6 +510,7 @@ function Header() {
               Cancel
             </button>
           </form>
+          {message && <p>{message}</p>}
         </div>
       ) : (
         ""
@@ -597,6 +607,24 @@ function Header() {
           </div>
         </Link>
       )}
+
+      {/* display on smaller screen  */}
+
+      <div className="hideonBig">
+        <div className="smallscreen-search">
+        <input
+          className="searchinput"
+          onChange={(e) => seSearchedText(e.target.value)}
+          onKeyDown={handleKeyDown}
+          type="text"
+          placeholder="Search"
+        />
+        <button onClick={handleSearch} className="searchbutton">
+          <i className="fa-solid fa-magnifying-glass fa-2xl"></i>
+        </button>
+        </div>
+      </div>
+
     </div>
   );
 }

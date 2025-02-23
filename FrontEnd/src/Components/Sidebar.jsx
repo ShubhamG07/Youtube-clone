@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 function Sidebar() {
   return (
     <div className="sidebar">
-      <div className="sidebaritem">
-        <i className="fa-solid fa-house fa-lg"></i>
+       <Link to="/"><div className="sidebaritem">
+        <i className="fa-solid fa-house fa-lg mbt-10"></i>
         <p>Home</p>
-      </div>
+      </div></Link> 
 
       <div className="sidebaritem">
         <svg
@@ -49,7 +49,7 @@ function Sidebar() {
 
       <Link to="/profile">
         <div className="sidebaritem">
-          <i className="fa-solid fa-user fa-lg "></i>
+          <i className="fa-solid fa-user fa-lg mbt-10"></i>
           <p>You</p>
         </div>
       </Link>

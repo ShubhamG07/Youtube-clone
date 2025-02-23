@@ -44,20 +44,20 @@ export const { loginStart, loginSuccess, loginFailure, logout, updateProfile } =
 // **checkAuthStatus** - Check user authentication
 export const checkAuthStatus = () => async (dispatch) => {
   try {
-    console.log("Checking authentication status..."); // Debug log
     // Send request to protected route to check if user is still authenticated
     const res = await axios.get("http://localhost:3000/users/profile", {
       withCredentials: true,
     });
-    console.log("User authenticated:", res.data); // Debug log
 
     // If the response is successful, mark the user as authenticated
     dispatch(loginSuccess({ user: res.data }));
   } catch (error) {
     // If there's an error (invalid or expired token), log out the user
-    const res = await axios.post("http://localhost:3000/users/logout", {
-      withCredentials: true,
-    });
+    const res =   await axios.post(
+      "http://localhost:3000/users/logout",
+      {},
+      { withCredentials: true }
+    );
     dispatch(logout());
   }
 };
