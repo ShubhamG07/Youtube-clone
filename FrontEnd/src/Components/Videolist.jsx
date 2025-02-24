@@ -15,6 +15,8 @@ function Videolist() {
 
   const [activeButton, setActiveButton] = useState(1);
 
+  // fetching videos from backend 
+
   const { data, error, loading } = useFetch("http://localhost:3000/videos");
 
   useEffect(() => {
@@ -50,6 +52,7 @@ function Videolist() {
     );
   }
 
+  // function to handle filter according to filter button 
   function handleFilter(id, filter) {
     setActiveButton(id);
     if (filter == "all") {
@@ -67,8 +70,7 @@ function Videolist() {
     }
   }
 
-  filteredVideos ? console.log("data", filteredVideos) : "";
-
+// our component ui starts from here 
   return (
     <div>
       <Sidebar />
@@ -86,6 +88,8 @@ function Videolist() {
         ) : (
           ""
         )}
+
+        {/* filter buttons  */}
 
         <div className={`filterbutton ${isMenuOpen ? "shift-right800" : ""}`}>
           <button
@@ -150,6 +154,7 @@ function Videolist() {
           </button>
         </div>
 
+{/* sending all videos to videoitem component  */}
         
 {filteredVideos
           ? filteredVideos.map((v) => <VideoItem key={v._id} data={v} />)

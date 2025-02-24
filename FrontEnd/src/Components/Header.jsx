@@ -20,7 +20,6 @@ function Header() {
   const [channelHandle, setChannelHandle] = useState("");
   const [message, setMessage] = useState("");
 
-  console.log("isauth", isAuthenticated, user);
 
   // function for handling search query
 
@@ -109,6 +108,8 @@ function Header() {
     return () => clearInterval(interval);
   }, [dispatch]);
 
+
+  // Our Component starts from here 
   return (
     <div className="header">
       <div>
@@ -387,7 +388,7 @@ function Header() {
                       <i className="fa-solid fa-question fa-lg mlr-10"></i>Help
                     </p>
                     <p>
-                      <i class="fa-regular fa-message fa-lg mlr-10"></i>Send
+                      <i className="fa-regular fa-message fa-lg mlr-10"></i>Send
                       Feedback
                     </p>
                     <p onClick={handleLogout}>
@@ -589,7 +590,7 @@ function Header() {
                     <i className="fa-solid fa-question fa-lg mlr-15"></i>Help
                   </p>
                   <p>
-                    <i class="fa-regular fa-message fa-lg mlr-15"></i>Send
+                    <i className="fa-regular fa-message fa-lg mlr-15"></i>Send
                     Feedback
                   </p>
                 </div>

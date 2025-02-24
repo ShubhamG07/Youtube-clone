@@ -7,6 +7,8 @@ function Suggested(props) {
   const videoid = props.vid;
   const [filteredVideos, setFilteredVideos] = useState(null);
 
+  // fetching videos from backend 
+
   const { data, error, loading } = useFetch("http://localhost:3000/videos");
 
   useEffect(() => {

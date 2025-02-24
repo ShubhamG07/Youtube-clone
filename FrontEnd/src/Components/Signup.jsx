@@ -12,6 +12,8 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  // function for signup 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

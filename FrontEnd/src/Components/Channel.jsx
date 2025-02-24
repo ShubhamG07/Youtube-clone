@@ -19,7 +19,6 @@ function Channel() {
     fetchVideos();
   }, [handle]);
 
-  console.log("user id channale", channel);
 
   // Fetch channel info
   const fetchChannel = async () => {

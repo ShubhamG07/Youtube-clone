@@ -8,6 +8,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import Comment from "./CommentItem";
 
+
 function VideoPlayer() {
   const { id } = useParams();
   const [comments, setComments] = useState([]);
@@ -23,6 +24,7 @@ function VideoPlayer() {
     `http://localhost:3000/videos/${id}`
   );
 
+ 
   // fetching comments for a particular video
   useEffect(() => {
     fetchComments();
@@ -31,7 +33,7 @@ function VideoPlayer() {
 
   // Fetch user liked/disliked videos
   const fetchUserLikes = async () => {
-    if (!user) return;
+    if (!user) {return; }
 
     try {
       const response = await axios.get("http://localhost:3000/users/profile", {
@@ -46,7 +48,7 @@ function VideoPlayer() {
 
   // Handle Like
   const handleLike = async () => {
-    if (!user) return navigate("/login");
+    if (!user) {return navigate("/login");}
 
     try {
       await axios.post(
@@ -60,10 +62,11 @@ function VideoPlayer() {
       console.error("Error liking video:", error);
     }
   };
+  
 
   // Handle Dislike
   const handleDislike = async () => {
-    if (!user) return navigate("/login");
+    if (!user) {return navigate("/login");}
 
     try {
       await axios.post(
@@ -90,7 +93,6 @@ function VideoPlayer() {
     }
   };
 
-  console.log("all comments", comments);
 
    // add comment when Enter key is pressed
    const handleKeyDown = (e) => {
@@ -113,7 +115,7 @@ function VideoPlayer() {
       );
 
       setNewComment("");
-      setComments([response.data, ...comments]); // Add new comment to state
+      fetchComments();
     } catch (error) {
       console.error("Error adding comment:", error);
     }
@@ -167,22 +169,20 @@ function VideoPlayer() {
 
   function formatViews(views) {
     if (views < 1000) return views.toString();
-    if (views < 1_000_000) return (views / 1_000).toFixed(0) + "K";
-    if (views < 1_000_000_000) return (views / 1_000_000).toFixed(0) + "M";
-    if (views < 1_000_000_000_000)
-      return (views / 1_000_000_000).toFixed(0) + "B";
-    return (views / 1_000_000_000_000).toFixed(1) + "T";
+  if (views < 1000000) return (views / 1000).toFixed(1) + "K";
+  if (views < 1000000000) return (views / 1000000).toFixed(1) + "M";
+  if (views < 1000000000000) return (views / 1000000000).toFixed(1) + "B";
+  return (views / 1000000000000).toFixed(1) + "T";
   }
 
-  //  data ? console.log("videoplayer loaded",data):"";
 
-  //  our component starts from here
+  //  our component UI starts from here
   return (
     <div>
      
       <div className="videoplayer">
        
-          {data ? (
+          {data?(
              <div className="reactplayer" >
             <ReactPlayer
               url={data.videoLink}
@@ -191,9 +191,10 @@ function VideoPlayer() {
               height="100%"
               playing={true} // Set to true to autoplay
               className="react-player"
-            /> </div>
+            />
+            </div> 
           ) : (
-            ""
+            null
           )}
        
         {data ? (
@@ -295,9 +296,9 @@ function VideoPlayer() {
 
               <div className="all-comments">
                 {comments
-                  ? comments.map((c) => (
-                      <Comment
-                        key={c._id}
+                  ? comments.map((c,index) => (
+                    <Comment 
+                        key={c._id ? c._id : `comment-${index}`}
                         data={c}
                         vid={id}
                         cdata={{
@@ -308,7 +309,7 @@ function VideoPlayer() {
                         }}
                       />
                     ))
-                  : ""}
+                  : null}
               </div>
             </div>
           </div>

@@ -82,9 +82,7 @@ export const updateComment = async (req, res) => {
     if (!comment) return res.status(404).json({ error: "Comment not found" });
 
     if (comment.userId.toString() !== req.body.user_id) {
-      return res
-        .status(403)
-        .json({ error: "Unauthorized to edit this comment" });
+      return res.status(403).json({ error: "Unauthorized to edit this comment" });
     }
 
     comment.text = req.body.text; // Update comment text

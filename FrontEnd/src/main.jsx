@@ -5,12 +5,15 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import Videolist from './Components/Videolist.jsx';
 
 
+// fetching components using lazy load 
 
 const VideoPlayer = lazy(() => import("./Components/Videoplayer.jsx"));
 const Signup= lazy(()=> import("./Components/Signup.jsx"));
 const Login= lazy(()=> import("./Components/Login.jsx"));
 const Profile= lazy(()=> import("./Components/Profile.jsx"));
 const Channel= lazy(()=> import("./Components/Channel.jsx"));
+
+// creating router according to path 
 
 const appRouter= createBrowserRouter([
 

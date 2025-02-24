@@ -74,6 +74,8 @@ function ChannelVideoItem(props) {
     setIsLoaded(true);
   };
 
+  // function to calculate time ago of video upload time 
+
   function timeAgo(uploadDate) {
     const uploadTime = new Date(uploadDate);
     const now = new Date();
@@ -97,6 +99,8 @@ function ChannelVideoItem(props) {
     }
     return "Just now";
   }
+
+  // function to conver views in K,M,B ,T 
 
   function formatViews(views) {
     if (views < 1000) return views.toString();

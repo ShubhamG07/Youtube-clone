@@ -13,6 +13,8 @@ function Login() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  // function to login 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -35,6 +37,8 @@ function Login() {
       setMessage(error.response?.data?.error || "Login failed");
     }
   };
+
+  // our component starts from here 
 
   return (
     <div className="signup">

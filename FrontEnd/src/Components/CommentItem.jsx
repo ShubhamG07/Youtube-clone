@@ -13,7 +13,6 @@ function Comment(props) {
   const [editedText, setEditedText] = useState(comment.text);
   const inputRef = useRef(null);
 
-  console.log("all comments props", comments);
 
   // Focus input when `isEditing` is true
   useEffect(() => {
@@ -79,6 +78,8 @@ function Comment(props) {
     }
   };
 
+  // function to open and close toggle menu 
+
   function checktoggleMenu() {
     if (editMenu) {
       setEditMenu(false);
@@ -110,6 +111,7 @@ function Comment(props) {
     return "Just now";
   }
 
+  // Our Component starts from here 
   return (
     <div className="commentdata" onClick={checktoggleMenu}>
       <div className="commentnamelogo">

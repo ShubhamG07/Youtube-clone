@@ -25,6 +25,8 @@ function VideoItem(props) {
     setIsLoaded(true);
   };
 
+  // function to format upload time 
+
   function timeAgo(uploadDate) {
     const uploadTime = new Date(uploadDate);
     const now = new Date();
@@ -49,6 +51,7 @@ function VideoItem(props) {
     return "Just now";
   }
 
+  // function to format views 
   function formatViews(views) {
     if (views < 1000) return views.toString();
     if (views < 1_000_000) return (views / 1_000).toFixed(1) + "K";
@@ -58,6 +61,7 @@ function VideoItem(props) {
     return (views / 1_000_000_000_000).toFixed(1) + "T";
   }
 
+  // our component ui starts from here 
   return (
     <div className={`videoitem ${isMenuOpen ? "shiftvideoitem800" : ""}`}>
       <div className="imagecontainer">

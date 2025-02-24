@@ -939,11 +939,11 @@ body a {
 
 /* channel item styling  */
 
-.channelvideo-container{
+.channelvideo-container {
   position: relative;
 }
 
-.edit-delete-channelvideo{
+.edit-delete-channelvideo {
   margin-left: 40px;
 }
 
@@ -952,7 +952,7 @@ body a {
   /* padding: 0px 10px; */
 }
 
-.small-channelmodule{
+.small-channelmodule {
   position: absolute;
   z-index: 10;
   bottom: 80px;
@@ -965,13 +965,13 @@ body a {
   box-shadow: 1px 1px 2px 2px grey;
 }
 
-.small-channelmodule p{
+.small-channelmodule p {
   margin: 5px;
   padding: 10px;
   border-radius: 10px;
 }
 
-.small-channelmodule p:hover{
+.small-channelmodule p:hover {
   background-color: black;
   color: white;
 }
@@ -1079,7 +1079,7 @@ body a {
   margin-right: 10px;
 }
 
-.mbt-10{
+.mbt-10 {
   margin-top: 10px;
   margin-bottom: 12px;
 }
@@ -1097,7 +1097,7 @@ body a {
   margin-left: 20px;
 }
 
-.hideonBig{
+.hideonBig {
   display: none;
 }
 
@@ -1156,7 +1156,7 @@ body a {
   /* line-height: 5px; */
 }
 
-.grey p{
+.grey p {
   margin: 2px;
 }
 
@@ -1208,7 +1208,7 @@ button.active {
 
 /* for 1200px screen width  */
 
-@media(max-width:1200px){
+@media(max-width:1200px) {
 
   /* video list page styling  */
 
@@ -1218,72 +1218,72 @@ button.active {
     padding: 10px;
   }
 
-/* video player page styling */
+  /* video player page styling */
 
-  
+
   .likebutton {
     padding: 5px 10px 5px 10px;
     font-size: 14px;
   }
-  
 
-  
+
+
   .dislikebutton {
     padding: 5px 10px 5px 10px;
     font-size: 14px;
   }
-  
-  
-  
+
+
+
   .sharebutton {
     padding: 5px 10px 5px 10px;
     font-size: 14px;
   }
-  
-  .videolistchannel{
+
+  .videolistchannel {
     width: 75vw;
   }
-  
+
 
 }
 
 
 /* for 800px screen width  */
 
-@media(max-width:800px){
+@media(max-width:800px) {
 
 
-  .searchinput{
+  .searchinput {
     width: 30vw;
     padding: 5px;
     padding-left: 20px;
     font-size: 14px;
   }
 
-  .searchbutton{
+  .searchbutton {
     height: 30px;
     width: 50px;
     font-size: 12px;
 
   }
 
-  .create-channel{
-padding: 5px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 16px;
-margin-right: 0px;
-height: 20px;
+  .create-channel {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-right: 0px;
+    height: 20px;
   }
 
-  .namelogo{
+  .namelogo {
     margin-right: 20px;
     height: 30px;
     width: 30px;
   }
 
-  .filterbutton{
+  .filterbutton {
     width: 90vw;
     height: 80px;
     top: 40px;
@@ -1294,38 +1294,38 @@ height: 20px;
     margin: 5px;
     font-size: 14px;
     padding: 5px;
-    
+
   }
 
-  .shift-right800{
+  .shift-right800 {
     width: 60vw;
   }
 
   /* Modal Styles */
-.modal {
-  width: 210px;
-}
+  .modal {
+    width: 210px;
+  }
 
-.modal-content {
-  width: 200px;
+  .modal-content {
+    width: 200px;
 
-}
+  }
 
-/* Menu Items */
+  /* Menu Items */
 
-.menu-items p {
-  font-size: 14px;
-}
+  .menu-items p {
+    font-size: 14px;
+  }
 
-.menu-items p a {
-  font-size: 14px;
-}
+  .menu-items p a {
+    font-size: 14px;
+  }
 
 
 
   /* video list page styling  */
 
-  .videolist{
+  .videolist {
     left: 20px;
   }
 
@@ -1338,71 +1338,71 @@ height: 20px;
 
   .loading {
     height: 100vh;
-    left:30px;
-   font-size: 16px;
+    left: 30px;
+    font-size: 16px;
   }
-  
+
   .error {
     height: 100vh;
-    left:30px;
-   font-size: 16px;
+    left: 30px;
+    font-size: 16px;
   }
-  
+
 
 
   /* video item styling  */
 
-.videoitem {
-  width: 45%;
-}
+  .videoitem {
+    width: 45%;
+  }
 
-.shiftvideoitem800{
-  width: 90%;
-  /* margin-top: 70px; */
-}
+  .shiftvideoitem800 {
+    width: 90%;
+    /* margin-top: 70px; */
+  }
 
-.shiftvideoitem800 .imagecontainer img {
-  height: 225px;
-}
+  .shiftvideoitem800 .imagecontainer img {
+    height: 225px;
+  }
 
-.imagecontainer img {
-  height: 190px;
-}
+  .imagecontainer img {
+    height: 190px;
+  }
 
-.videoitemdetails a{
-  font-size: 16px;
-}
+  .videoitemdetails a {
+    font-size: 16px;
+  }
 
-.videoitemdetails p{
-  font-size: 14px;
-}
+  .videoitemdetails p {
+    font-size: 14px;
+  }
 
-/* video player page styling */
+  /* video player page styling */
 
-  
+
   .likebutton {
     padding: 5px 10px 5px 10px;
     font-size: 14px;
   }
-  
 
-  
+
+
   .dislikebutton {
     padding: 5px 10px 5px 10px;
     font-size: 14px;
   }
-  
-  
-  
+
+
+
   .sharebutton {
     padding: 5px 10px 5px 10px;
     font-size: 14px;
   }
-  
-  .videolistchannel{
+
+  .videolistchannel {
     width: 75vw;
   }
-  
+
 
   /* videoplayer styling  */
 
@@ -1414,28 +1414,28 @@ height: 20px;
     padding: 20px;
   }
 
-  .channel-button{
+  .channel-button {
     font-size: 14px;
   }
 
   .subscribebutton>button {
     width: 80px;
     font-size: 14px;
-   
+
   }
-  
+
   .likebutton {
-    padding: 5px 10px ;
+    padding: 5px 10px;
     font-size: 12px;
   }
- 
-  
+
+
   .dislikebutton {
     padding: 5px 10px;
     font-size: 12px;
   }
-  
-  
+
+
   .sharebutton {
     padding: 5px 10px;
     font-size: 12px;
@@ -1446,7 +1446,7 @@ height: 20px;
   .suggested {
     width: 90%;
     position: relative;
-   top: 20px;
+    top: 20px;
     left: 10px;
     padding: 20px;
   }
@@ -1454,67 +1454,67 @@ height: 20px;
 
   /* comment section  */
 
-.commentsection {
-  display: flex;
-}
+  .commentsection {
+    display: flex;
+  }
 
-.commentsection input {
-  width: 70vw;
-}
-
-
-.commentnamelogo {
-  width: 50px;
-  height: 50px;
-}
-
-.commentdata {
-  width: 85vw;
-}
+  .commentsection input {
+    width: 70vw;
+  }
 
 
+  .commentnamelogo {
+    width: 50px;
+    height: 50px;
+  }
 
-.commentinput input {
-  width: 60vw;
-}
-
-/* channel page styling  */
-
-.channelpagelogo {
-  height: 110px;
-  width: 110px;
-  font-size: 80px;
-}
-
-.channelname {
-  font-size: 35px;
-}
-
-.channel-upper{
-  width: 80vw;
-}
-
-.channel-lower {
-   top: 50px;
-   width: 80vw;
-}
-
-.bb2channel {
-  font-size: 25px;
-}
+  .commentdata {
+    width: 85vw;
+  }
 
 
-/* channel item styling  */
 
-.shiftvideochannelitem800{
-  width: 70%;
-}
+  .commentinput input {
+    width: 60vw;
+  }
 
-/* channel modal styling  */
+  /* channel page styling  */
 
-.channel-Modal form{
-  padding-left:10% ;
-}
+  .channelpagelogo {
+    height: 110px;
+    width: 110px;
+    font-size: 80px;
+  }
+
+  .channelname {
+    font-size: 35px;
+  }
+
+  .channel-upper {
+    width: 80vw;
+  }
+
+  .channel-lower {
+    top: 50px;
+    width: 80vw;
+  }
+
+  .bb2channel {
+    font-size: 25px;
+  }
+
+
+  /* channel item styling  */
+
+  .shiftvideochannelitem800 {
+    width: 70%;
+  }
+
+  /* channel modal styling  */
+
+  .channel-Modal form {
+    padding-left: 10%;
+  }
 
 
 
@@ -1522,348 +1522,348 @@ height: 20px;
 
 /* Responsiveness for 400px screen width  */
 
-@media (max-width:400px){
- .hideon400px{
-  display: none;
- }
+@media (max-width:400px) {
+  .hideon400px {
+    display: none;
+  }
 
- .hideonBig{
-display: block;
- }
-
- 
- /* search input and header  */
-
- .smallscreen-search{
-  width: 100vw;
-  margin:20px 0px 20px 20px ;
- }
+  .hideonBig {
+    display: block;
+  }
 
 
-.searchinput {
-  padding: 5px 5px 5px 20px;
-  margin-left: 2%;
-  width: 60%;
-}
+  /* search input and header  */
 
-.signin {
-  width: 80px;
-  padding: 5px 2px;
-  font-size: 12px;
-  margin-top: 10px;
-  margin-right: 15px;
-}
+  .smallscreen-search {
+    width: 100vw;
+    margin: 20px 0px 20px 20px;
+  }
 
-.create-channel{
-  padding: 5px 7px;
-  font-size: 10px;
-  margin-top: 8px;
-  height: 15px;
-    }
+
+  .searchinput {
+    padding: 5px 5px 5px 20px;
+    margin-left: 2%;
+    width: 60%;
+  }
+
+  .signin {
+    width: 80px;
+    padding: 5px 2px;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-right: 15px;
+  }
+
+  .create-channel {
+    padding: 5px 7px;
+    font-size: 10px;
+    margin-top: 8px;
+    height: 15px;
+  }
 
   .usermodal {
-      top: 50px;
-      right: 20px;
-      width: 250px;
-    
-  } 
+    top: 50px;
+    right: 20px;
+    width: 250px;
 
-  .user-menu-items p{
+  }
+
+  .user-menu-items p {
     font-size: 14px;
   }
 
-/* videolist styling  */
+  /* videolist styling  */
 
-.filterbutton {
-  width: 100vw;
-  height: 70px;
-  top: 110px;
-}
+  .filterbutton {
+    width: 100vw;
+    height: 70px;
+    top: 110px;
+  }
 
-.filterbutton button {
-  margin: 2px;
-  font-size: 10px;
-  padding: 5px;
-}
+  .filterbutton button {
+    margin: 2px;
+    font-size: 10px;
+    padding: 5px;
+  }
 
-.videolist {
-  left: 0px;
-  width: 95vw;
-  padding: 10px;
-  padding-top: 110px;
+  .videolist {
+    left: 0px;
+    width: 95vw;
+    padding: 10px;
+    padding-top: 110px;
 
-}
-
-.shift-right800{
-  width: 95vw;
-}
+  }
+
+  .shift-right800 {
+    width: 95vw;
+  }
 
-/* video item styling  */
+  /* video item styling  */
 
-.videoitem {
-  width: 100%;
-}
+  .videoitem {
+    width: 100%;
+  }
 
-.videoitem span{
-  font-size: 12px;
-}
+  .videoitem span {
+    font-size: 12px;
+  }
 
-.videoitem p{
-  font-size: 12px;
-}
+  .videoitem p {
+    font-size: 12px;
+  }
 
 
-.shiftvideoitem800{
-  width: 100%;
-}
+  .shiftvideoitem800 {
+    width: 100%;
+  }
 
-.novideofound {
-  height: 50vh;
-}
+  .novideofound {
+    height: 50vh;
+  }
 
-.novideofound img{
-  height: 150px;
-}
+  .novideofound img {
+    height: 150px;
+  }
 
-.novideofound h1{
-  font-size: 20px;
-  text-align: center;
-}
+  .novideofound h1 {
+    font-size: 20px;
+    text-align: center;
+  }
 
-.novideofound p{
-  font-size: 20px;
-}
+  .novideofound p {
+    font-size: 20px;
+  }
 
-/* videoplayer styling  */
+  /* videoplayer styling  */
 
-.videoplayer {
-  top: 120px;
-  left: 0px;
-  padding: 15px;
-}
+  .videoplayer {
+    top: 120px;
+    left: 0px;
+    padding: 15px;
+  }
 
-.videodetails h2{
-  font-size: 16px;
-}
+  .videodetails h2 {
+    font-size: 16px;
+  }
 
-.channel-button {
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+  .channel-button {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
-.likebutton {
-  padding: 5px 10px ;
-  font-size: 10px;
-}
-
-
-.dislikebutton {
-  padding: 5px 10px ;
-  font-size: 10px;
-}
-
-
-.sharebutton {
-  padding: 5px 10px ;
-  font-size: 12px;
-}
-
-.description {
-  font-size: 14px;
-}
+  .likebutton {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+
+  .dislikebutton {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+
+  .sharebutton {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
 
-.description p{
-  margin: 10px 0px;
-}
-
-/* suggested video styling  */
-
-.suggested {
-  width: 90%;
-  left: 0px;
-  padding: 10px;
-  margin-top: 40px;
-}
+  .description p {
+    margin: 10px 0px;
+  }
+
+  /* suggested video styling  */
+
+  .suggested {
+    width: 90%;
+    left: 0px;
+    padding: 10px;
+    margin-top: 40px;
+  }
 
-.suggesteditem{
-  flex-direction: column;
-}
+  .suggesteditem {
+    flex-direction: column;
+  }
 
-.suggestedimage img{
-  width: 100%;
-  height: 200px;
-}
-
-/* comment section  */
-
-.commentsection {
-display: flex;
-}
-
-.commentsection input {
-width: 70%;
-font-size: 14px;
-}
-
-
-.commentnamelogo {
-width: 30px;
-height: 30px;
-margin-right: 0px;
-}
-
-.commentdata {
-width: 85vw;
-}
-
-.comment-button{
-  font-size: 14px;
-  padding: 5px;
-}
+  .suggestedimage img {
+    width: 100%;
+    height: 200px;
+  }
+
+  /* comment section  */
+
+  .commentsection {
+    display: flex;
+  }
+
+  .commentsection input {
+    width: 70%;
+    font-size: 14px;
+  }
+
+
+  .commentnamelogo {
+    width: 30px;
+    height: 30px;
+    margin-right: 0px;
+  }
+
+  .commentdata {
+    width: 85vw;
+  }
+
+  .comment-button {
+    font-size: 14px;
+    padding: 5px;
+  }
 
-
-.commentinput input {
-width: 70%;
-}
-
-
-
-/* sidebar styling  */
-
-.sidebar {
-  position: fixed;
-  width: 100vw;
-  height: 100px;
-  left: 0px;
-  top: 84vh;
-  display: flex;
-  flex-direction: row;
-  z-index: 100;
-  background-color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-/* signup, login and profile styling  */
-
-.formcontainer {
-  width: 90%;
-  height: 70%;
-  margin-top: 50px;
-  position: relative;
-  top: 100px;
-  border-radius: 20px;
-  padding: 20px;
-  border: none;
-}
-
-/* channel modal  styling  */
-
-.channel-Modal {
-  width: 100vw;
-  height: 90vh;
-  top: 100px;
-  left: 0px;
-  justify-content: start;
-  padding-top: 100px;
-}
-
-
-
-.createchannelbutton {
-  padding: 5px;
-  font-size: 14px;
-}
-
-
-.cancelbutton {
-  padding: 5px;
-  font-size: 14px;
-
-}
-
-/* profile page styling  */
-
-.profile-container {
-  top: 120px;
-  width: 100vw;
-  left: 0px;
-  display: block;
-}
-
-.profileformcontainer {
-  width: 80%;
-  height: 70vh;
-  top: 40px;
- right: 0px;
- left: 10px;
-}
-
-.profileformcontainer button {
-  font-size: 14px;
-  padding: 5px;
-}
-
-
-.name-username-data {
-  font-size: 20px;
-  left: 10px;
-  top: 20px;
-}
-
-
-.biglogoname {
-  height: 60px;
-  width: 60px;
-  font-size: 45px;
-}
-
-/* channel page styling  */
-
-.channel {
-  position: relative;
-  left: 10px;
-  width: 100vw;
-}
-
-.channel-upper {
-  top: 140px;
-  height: 20vh;
-}
-
-.channelpagelogo {
-  height: 60px;
-  width: 60px;
-  font-size: 45px;
-  margin: 10px;
-}
-
-.channelname {
-  font-size: 30px;
-  margin: 0px;
-}
-
-
-.channel-lower {
-  top: 90px;
-}
-
-.bb2channel {
-  font-size: 20px;
-}
-
-.videolistchannel {
-  width: 90vw;
-}
-
-.editchannelvideo{
-  z-index: 90;
-}
-
-
-.shiftvideochannelitem800{
-  width: 100%;
-}
+
+  .commentinput input {
+    width: 70%;
+  }
+
+
+
+  /* sidebar styling  */
+
+  .sidebar {
+    position: fixed;
+    width: 100vw;
+    height: 100px;
+    left: 0px;
+    top: 84vh;
+    display: flex;
+    flex-direction: row;
+    z-index: 100;
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  /* signup, login and profile styling  */
+
+  .formcontainer {
+    width: 90%;
+    height: 70%;
+    margin-top: 50px;
+    position: relative;
+    top: 100px;
+    border-radius: 20px;
+    padding: 20px;
+    border: none;
+  }
+
+  /* channel modal  styling  */
+
+  .channel-Modal {
+    width: 100vw;
+    height: 90vh;
+    top: 100px;
+    left: 0px;
+    justify-content: start;
+    padding-top: 100px;
+  }
+
+
+
+  .createchannelbutton {
+    padding: 5px;
+    font-size: 14px;
+  }
+
+
+  .cancelbutton {
+    padding: 5px;
+    font-size: 14px;
+
+  }
+
+  /* profile page styling  */
+
+  .profile-container {
+    top: 120px;
+    width: 100vw;
+    left: 0px;
+    display: block;
+  }
+
+  .profileformcontainer {
+    width: 80%;
+    height: 70vh;
+    top: 40px;
+    right: 0px;
+    left: 10px;
+  }
+
+  .profileformcontainer button {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+
+  .name-username-data {
+    font-size: 20px;
+    left: 10px;
+    top: 20px;
+  }
+
+
+  .biglogoname {
+    height: 60px;
+    width: 60px;
+    font-size: 45px;
+  }
+
+  /* channel page styling  */
+
+  .channel {
+    position: relative;
+    left: 10px;
+    width: 100vw;
+  }
+
+  .channel-upper {
+    top: 140px;
+    height: 20vh;
+  }
+
+  .channelpagelogo {
+    height: 60px;
+    width: 60px;
+    font-size: 45px;
+    margin: 10px;
+  }
+
+  .channelname {
+    font-size: 30px;
+    margin: 0px;
+  }
+
+
+  .channel-lower {
+    top: 90px;
+  }
+
+  .bb2channel {
+    font-size: 20px;
+  }
+
+  .videolistchannel {
+    width: 90vw;
+  }
+
+  .editchannelvideo {
+    z-index: 90;
+  }
+
+
+  .shiftvideochannelitem800 {
+    width: 100%;
+  }
 
 
 }
