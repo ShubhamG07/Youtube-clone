@@ -101,9 +101,9 @@ A full-stack YouTube-like web application built using the MERN stack (MongoDB, E
 ```  
 ## Tech Stack
 
-**Back-End:** React, Redux, Axios, React Router, React Player
+**Frontend:** React, Redux, Axios, React Router, React Player
 
-**Database:** Node.js, Express.js, MongoDB, Mongoose
+**Backend:** Node.js, Express.js, MongoDB, Mongoose
 
 **Authentication:** JWT (Json Web Token), HttpOnly Cookies, bcrypt
 
